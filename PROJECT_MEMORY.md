@@ -38,3 +38,8 @@ Email explicitly provided by user. LinkedIn and resume links come from the origi
 
 ## Portability principle
 The repository is the source of truth. Maintain AGENTS.md, CLAUDE.md, this memory, decision log, status, source attribution, and hosting instructions in Git. Any static host can serve the built site; no Codex, Sites, Framer, or Vercel-specific API is needed at runtime.
+
+## Published first version
+Live: https://maitreyi0002-beep.github.io/maitreyi-portfolio/
+Repository: https://github.com/maitreyi0002-beep/maitreyi-portfolio
+GitHub Pages deployment verified on 2026-09-14. Source and cross-agent memory are committed together. Vercel configuration is included for optional migration. First version awaits Maitreyi's visual feedback; do not treat publication as final design approval.

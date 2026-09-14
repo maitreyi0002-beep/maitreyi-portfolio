@@ -30,7 +30,12 @@ First landing-page version implemented and ready for user review. This does not 
 
 ## Deployment
 GitHub repository created: https://github.com/maitreyi0002-beep/maitreyi-portfolio
-Public repository contains the requested portable source and project context. No credentials, local reference downloads, or unrelated files are included. GitHub Pages deployment is being configured; update this section only after verifying the live URL.
+Public repository contains the requested portable source and project context. No credentials, local reference downloads, or unrelated files are included. GitHub Pages deployment succeeded. Live URL: https://maitreyi0002-beep.github.io/maitreyi-portfolio/
+
+Verified production routes return HTTP 200 and expected content: homepage, agents/, llms.txt, and assets/logo.svg. The live homepage also loaded in the browser with correct relative navigation and system theme.
+
+Deployment workflow: https://github.com/maitreyi0002-beep/maitreyi-portfolio/actions/runs/34878656776
+Deployed source commit: 371d4ff19cbeb42065d416656eaa9a4fe8d4f141. This status-only follow-up does not change the deployed website.
 
 ## Next conversation
 Ask for feedback on the live first version, especially intro copy, project presentation, logo scale/motion, sound, and spacing. Do not start case study rewriting or add Experience/Stack to the homepage. New AI experiment content is still needed.

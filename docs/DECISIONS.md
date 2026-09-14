@@ -24,3 +24,6 @@ User explicitly requests portable coded website on GitHub or Vercel. Use depende
 
 ## 2026-09-14: factual restraint (implementation)
 Do not fabricate experience dates, tool lists, outcomes, or demo projects. Portfolio copy is a proposed rewrite based on user positioning. Selected project metrics describe system scope, not measured impact. No 1,776 research metric pending clarification.
+
+## 2026-09-14: first version published (implementation)
+Created maitreyi0002-beep/maitreyi-portfolio and deployed to GitHub Pages. Repository contains source and portable handoff context. Verified successful deployment plus HTTP 200 and expected content for homepage, agent page, raw summary, and logo. A later documentation-only commit records deployment results. User approval of visual direction is still pending.

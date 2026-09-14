@@ -1,0 +1,8 @@
+node_modules/
+dist/
+work/
+outputs/
+.vercel/
+.DS_Store
+.env*
+.sites-runtime/

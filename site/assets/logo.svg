@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="100 80 490 560" fill="none">
+  <style>:root{color:#242424}@media(prefers-color-scheme:dark){:root{color:#f4f4f4}}</style>
+  <path d="M184 116C257 130 268 262 246 356C229 438 192 461 165 433C124 390 183 246 246 190C304 140 359 153 381 212C407 280 395 384 362 427C328 469 302 433 319 369C338 298 393 201 451 174C546 126 561 303 498 438" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="currentColor"><circle cx="192" cy="520" r="27"/><circle cx="478" cy="520" r="27"/></g>
+  <path d="M296 599H378" stroke="currentColor" stroke-width="23" stroke-linecap="round"/>
+</svg>

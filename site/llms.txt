@@ -1,0 +1,30 @@
+# Maitreyi | Product Designer
+
+## Profile
+Maitreyi is a product designer interested in human behavior and psychology, with a practice spanning research, interaction design, design systems, AI products, and working code prototypes. She is interested in owning ambiguous problems from discovery through implementation.
+
+## Selected work
+
+### Super Agent, Loop
+Focus: behavioral research, agentic interactions, design systems.
+Summary: bringing four specialized AI products into one conversational entry point, so users do not need to choose an assistant before asking a question.
+Case study: https://uxmaitreyii.framer.website/super-agent
+
+### Connect, Loop
+Focus: onboarding, information architecture, reusable interaction patterns.
+Summary: organizing 22 different workflows into six reusable patterns for an ecosystem of more than 50 data connectors.
+Case study: https://uxmaitreyii.framer.website/connect
+
+## AI experiments
+Three experiments will be added. No experiment content, names, or results have been published on this portfolio yet.
+
+## About
+Maitreyi studies behavior and psychology to understand the person behind the screen. She uses design fundamentals to create clear experiences, and code and AI-assisted tools to build and test ideas. Outside work, she enjoys exploring hobbies, planning treasure hunts for friends, and side projects.
+
+## Contact
+Email: maitreyi0002@gmail.com
+LinkedIn: https://www.linkedin.com/in/maitreyii/
+Resume: https://drive.google.com/file/d/1aqnmQG7KNsAOaFF82FMRpJ2zBPduf_5s/view?usp=sharing
+
+## Accuracy
+This summary reflects the public landing page. Employment dates, unverified impact metrics, and shipping status are intentionally not asserted. The linked case studies remain on the previous portfolio while the landing page is redesigned.

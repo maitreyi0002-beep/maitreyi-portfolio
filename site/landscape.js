@@ -38,6 +38,13 @@
     }
     button.addEventListener('pointermove',input);
     button.addEventListener('click',input);
+    if (id === 'blossom-canvas') setInterval(() => {
+      if (!state.visible || document.hidden || reduced.matches || !state.blossoms.length) return;
+      const blossom = state.blossoms[Math.floor(Math.random() * state.blossoms.length)];
+      interact(state, blossom.x, blossom.y);
+      state.active = true;
+      wake();
+    }, 5000);
     wake();
   }
   const noise = (x,y) => { const n=Math.sin(x*127.1+y*311.7)*43758.5453; return n-Math.floor(n); };
@@ -46,8 +53,8 @@
     const length = Math.min(s.width*.88,850);
     const scale = length/850;
     const dark = document.documentElement.dataset.theme==='dark';
-    const branches = [[-20,28,310,75,11],[260,69,525,47,8],[485,48,805,77,5],[115,48,235,13,6],[312,70,410,112,5],[500,48,600,12,4],[633,61,719,112,4]];
-    const buds = [[170,25],[234,15],[277,69],[343,73],[402,107],[468,48],[535,48],[596,14],[645,65],[713,107],[769,72],[812,78],[95,40],[300,45],[376,88],[552,29],[683,83],[745,76]];
+    const branches = [[-20,28,310,75,11],[260,69,525,47,8],[485,48,805,77,5],[115,48,235,13,6],[312,70,410,112,5],[500,48,600,12,4],[633,61,719,112,4],[30,35,190,103,7],[140,50,350,18,5],[280,70,470,123,5],[475,50,705,19,4],[705,68,842,110,3]];
+    const buds = [[170,25],[234,15],[277,69],[343,73],[402,107],[468,48],[535,48],[596,14],[645,65],[713,107],[769,72],[812,78],[95,40],[300,45],[376,88],[552,29],[683,83],[745,76],[145,86],[195,104],[317,23],[461,119],[669,24],[837,109]];
     ctx.fillStyle = dark ? '#95674f' : '#755342';
     for(const [x,y,xx,yy,w] of branches) {
       const distance=Math.hypot(xx-x,yy-y); const count=Math.ceil(distance/unit);

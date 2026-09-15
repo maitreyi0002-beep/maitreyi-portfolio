@@ -829,3 +829,12 @@ h1 {
 #hero-title { font-size:32px; }
 @media(max-width:767px) { #hero-title { font-size:35px; } }
 @media(max-width:370px) { #hero-title { font-size:30px; } }
+
+/* The preview palette must change card surfaces together with text colors. */
+:root[data-preview] .project { background:#f4fafb; border-color:#92b8bf; color:#17363b; }
+:root[data-preview] .project-link p { color:#36565a; }
+.wave-underline { position:absolute; left:0; width:100%; height:8px; bottom:-8px; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M-4 6 4 2 12 6 20 2' fill='none' stroke='%23315ed4' stroke-width='1.5'/%3E%3C/svg%3E"); background-size:16px 8px; background-repeat:repeat-x; }
+.contact-links .wave-underline { bottom:4px; }
+.contact-links { column-gap:30px; row-gap:14px; }
+.contact-links a { white-space:nowrap; }
+@media(max-width:370px) { .contact-links a { font-size:14px; } }

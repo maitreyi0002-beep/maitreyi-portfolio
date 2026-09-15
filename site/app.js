@@ -202,12 +202,19 @@ document
     }
   });
 
-document.querySelectorAll(".click-word, .contact-links a").forEach((link) => link.addEventListener("click", () => {
-  const path = link.querySelector("path");
-  path.getAnimations().forEach((animation) => animation.cancel());
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    path.animate([{ transform: "translateX(0)" }, { transform: "translateX(-16px)" }], {
-      duration: 260, iterations: 3, easing: "linear"
-    });
+document.querySelectorAll(".click-word, .contact-links a").forEach((link) => {
+  const wave = link.querySelector(".wave-underline");
+  const animate = () => {
+    wave.getAnimations().forEach((animation) => animation.cancel());
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      wave.animate([{ backgroundPositionX: "0px" }, { backgroundPositionX: "-16px" }], {
+        duration: 260, iterations: 3, easing: "linear"
+      });
+    }
+  };
+  link.addEventListener("click", animate);
+  if (link.matches(".contact-links a")) {
+    link.addEventListener("pointerenter", animate);
+    link.addEventListener("focus", animate);
   }
-}));
+});

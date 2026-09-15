@@ -51,3 +51,5 @@ Restoration source 52c068d deployed successfully via Actions 34963155564. Source
 
 ## Fuller tree, periodic petals, and contrast/link fixes
 Added five branching twigs and six flower clusters. Visible blossom canopy releases petals every 5000ms, skipping hidden/offscreen/reduced-motion states. Project preview cards now switch to a light surface with the dark preview text in both themes. Footer displays linkedin/in/maitreyii, x/maitreyi0002, github/maitreyi0002-beep and email. Heading/contact underlines share a fixed 16px repeating wave tile, avoiding stretched SVGs. Contact waves animate on hover, focus and click; heading retains click trigger.
+
+Source 7e7940d deployed, Actions 34964714570 succeeded, live footer IDs and shared underline markup verified. Build/source/syntax passed. Browser verified dark-theme project preview surface rgb(244,250,251), description rgb(54,86,90), all five wave tiles 16px by 8px. Five-second timer and hidden/reduced-motion guards checked in source.

@@ -46,3 +46,5 @@ Source check, build and landscape JavaScript syntax passed; light header inspect
 
 ## Latest correction: restore pixel blossoms
 User rejected the realistic branch. Restore pixel branch and falling squares with six additional blossom clusters. Remove realistic asset from shipped site. Main heading reduced by 4px: 32px desktop, 35px mobile, 30px narrow mobile, ending in three dots. Work section has only Selected work; no Projects pill. Other components unchanged.
+
+Restoration source 52c068d deployed successfully via Actions 34963155564. Source check, build and landscape syntax passed.

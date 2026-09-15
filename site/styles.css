@@ -204,7 +204,7 @@ nav a:hover {
   display: none;
 }
 .hero {
-  padding: 90px 0 116px;
+  padding: 72px 0 80px;
 }
 .logo-mark {
   display: block;
@@ -234,12 +234,12 @@ h1 {
 }
 .intro-copy p {
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.45;
   color: var(--muted);
-  margin-bottom: 27px;
+  margin-bottom: 18px;
 }
 .signature {
-  margin-top: 30px;
+  margin-top: 22px;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.5;
@@ -258,13 +258,13 @@ h1 {
   letter-spacing: 0.02em;
 }
 .work-section {
-  padding: 0 0 112px;
+  padding: 0 0 76px;
 }
 .project {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
   gap: 24px;
-  padding: 28px 0 32px;
+  padding: 20px 0 24px;
 }
 .project + .project {
   border-top: 1px solid var(--line);
@@ -290,7 +290,7 @@ h1 {
 }
 .project-link p {
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.45;
   color: var(--muted);
   max-width: 580px;
 }
@@ -380,21 +380,6 @@ h1 {
 [data-preview="connect"] .scene-connect .screen-right {
   transform: translate(0, -54%) rotate(3deg);
 }
-.preview-button {
-  display: none;
-}
-.mobile-preview[hidden] {
-  display: none;
-}
-.mobile-preview {
-  margin-top: 22px;
-}
-.mobile-preview img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 14px;
-}
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -407,7 +392,7 @@ h1 {
 }
 .experiments-section {
   border-top: 1px solid var(--line);
-  padding: 52px 0 112px;
+  padding: 38px 0 76px;
 }
 .experiments-section .section-heading {
   display: flex;
@@ -435,7 +420,7 @@ h1 {
   grid-template-columns: 44px 1fr auto;
   align-items: center;
   gap: 20px;
-  padding: 26px 0;
+  padding: 20px 0;
 }
 .experiment-symbol {
   width: 44px;
@@ -588,28 +573,12 @@ h1 {
   .project-stage {
     display: none;
   }
-  .preview-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 44px;
-    padding: 0;
-    font-size: 13px;
-    margin-top: 12px;
-    color: var(--muted);
-  }
   .project-arrow {
     opacity: 1;
     transform: none;
   }
   .project-link:focus-visible {
     outline-offset: 4px;
-  }
-  .mobile-preview {
-    animation: preview-enter 0.45s ease;
-  }
-  .mobile-preview img:nth-child(2) {
-    animation: preview-other 0.5s ease;
   }
   @keyframes preview-enter {
     from {
@@ -663,7 +632,7 @@ h1 {
     margin-right: 4px;
   }
   .hero {
-    padding: 72px 0 90px;
+    padding: 52px 0 64px;
   }
   .logo-mark {
     width: 62px;
@@ -677,8 +646,8 @@ h1 {
   }
   .intro-copy p {
     font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 25px;
+    line-height: 1.45;
+    margin-bottom: 18px;
   }
   .signature {
     font-size: 16px;
@@ -699,7 +668,7 @@ h1 {
   }
   .project-link p {
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.45;
   }
   .project-number {
     font-size: 14px;
@@ -788,3 +757,8 @@ h1 {
     stroke-dashoffset: 0;
   }
 }
+
+.click-word { position: relative; display: inline-block; padding: 0; font: inherit; letter-spacing: inherit; }
+.click-word svg { position: absolute; width: 100%; height: 9px; left: 0; bottom: -8px; overflow: visible; }
+.click-word path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.click-word.is-drawn path { stroke-dashoffset: 0; }

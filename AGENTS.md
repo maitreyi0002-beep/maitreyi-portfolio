@@ -9,7 +9,7 @@ Read `PROJECT_MEMORY.md`, `docs/DECISIONS.md`, and `docs/STATUS.md` before makin
 - Keep exactly three honest AI experiment placeholders until Maitreyi supplies content.
 - Use the NEW angular zigzag logo supplied 2026-09-15, black/white only, revealed by one drawing stroke. The earlier face/eyes logo is retired.
 - Never display availability or hiring-status language (including open to work or open to opportunities) anywhere on the website or public agent summary.
-- No About / Person behind the pixels section. Selected work is a numbered text list with heading and two-line summary, full-page project colors and lateral screens on desktop hover/focus, explicit mobile previews.
+- No About / Person behind the pixels section. Selected work is a numbered text list with heading and two-line summary, full-page project colors and lateral screens on desktop hover/focus, direct case-study links on mobile.
 - Match the supplied Bishal reference: narrow centered reading column, generous side margins, conversational paragraph intro and signature. Header/footer refinements and sound design are deferred.
 - Keep light/dark modes, optional interaction sounds, agent-readable text, and mobile behavior.
 - Public contact email is `maitreyi0002@gmail.com`.
@@ -26,3 +26,6 @@ Read `PROJECT_MEMORY.md`, `docs/DECISIONS.md`, and `docs/STATUS.md` before makin
 
 ## Quick start
 `npm run dev` serves `http://127.0.0.1:4173`. `npm run build` copies `site/` to `dist/`. Any static host can serve the result. See README for hosting.
+
+## 2026-09-15: compact spacing and click detail
+User requested tighter line spacing and removal of Preview screens controls. Intro/project line-height is 1.45 with smaller paragraph and section gaps. The word click is a keyboard-accessible button that draws a zigzag underline once per activation; reduced motion shows it immediately. Mobile project titles navigate directly; desktop side previews remain. Color accents are proposals only, pending the next iteration.

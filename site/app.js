@@ -114,7 +114,7 @@ document.addEventListener("click", (event) => {
 const logo = document.querySelector("#logo-mark");
 logo?.addEventListener("click", () => logo.classList.toggle("replay"));
 
-// Wide, fine-pointer screens use peripheral previews; touch gets explicit disclosure.
+// Wide, fine-pointer screens use peripheral previews; touch keeps direct case-study links.
 const widePreview = matchMedia("(min-width:1101px) and (hover:hover)");
 const projects = [...document.querySelectorAll("[data-project]")];
 let hoveredProject = null;
@@ -144,37 +144,13 @@ projects.forEach((project) => {
       syncPreview();
     }
   });
-  const button = project.querySelector(".preview-button");
-  const panel = project.querySelector(".mobile-preview");
-  button.addEventListener("click", () => {
-    const opening = button.getAttribute("aria-expanded") !== "true";
-    projects.forEach((other) => {
-      other
-        .querySelector(".preview-button")
-        .setAttribute("aria-expanded", "false");
-      other.querySelector(".preview-button").innerHTML =
-        'Preview screens <span aria-hidden="true">+</span>';
-      other.querySelector(".mobile-preview").hidden = true;
-    });
-    button.setAttribute("aria-expanded", String(opening));
-    button.innerHTML = opening
-      ? 'Hide screens <span aria-hidden="true">−</span>'
-      : 'Preview screens <span aria-hidden="true">+</span>';
-    panel.hidden = !opening;
-  });
+
 });
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape") return;
   hoveredProject = focusedProject = null;
   syncPreview();
-  projects.forEach((project) => {
-    const button = project.querySelector(".preview-button");
-    const panel = project.querySelector(".mobile-preview");
-    if (!panel.hidden && panel.contains(document.activeElement)) button.focus();
-    button.setAttribute("aria-expanded", "false");
-    button.innerHTML = 'Preview screens <span aria-hidden="true">+</span>';
-    panel.hidden = true;
-  });
+
 });
 widePreview.addEventListener("change", () => {
   hoveredProject = focusedProject = null;
@@ -221,3 +197,15 @@ document
           "Automatic copy is unavailable. The summary is selected for you to copy.";
     }
   });
+
+const clickWord = document.querySelector(".click-word");
+clickWord?.addEventListener("click", () => {
+  const path = clickWord.querySelector("path");
+  path.getAnimations().forEach((animation) => animation.cancel());
+  clickWord.classList.add("is-drawn");
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    path.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], {
+      duration: 600, easing: "ease-out", fill: "both"
+    });
+  }
+});

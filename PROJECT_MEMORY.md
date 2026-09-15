@@ -51,3 +51,6 @@ GitHub Pages deployment verified on 2026-09-14. Source and cross-agent memory ar
 - Work becomes heading + two-line description, with project-colored full-page background and screenshots sliding in/out at the sides on hover.
 - Keep three experiments, improve section spacing. Remove Person behind the pixels / About entirely.
 - Header and footer will be refined later. Sound design is also postponed. Keep case studies unchanged.
+
+## 2026-09-15: compact spacing and click detail
+User requested tighter line spacing and removal of Preview screens controls. Intro/project line-height is 1.45 with smaller paragraph and section gaps. The word click is a keyboard-accessible button that draws a zigzag underline once per activation; reduced motion shows it immediately. Mobile project titles navigate directly; desktop side previews remain. Color accents are proposals only, pending the next iteration.

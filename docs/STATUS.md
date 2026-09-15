@@ -8,7 +8,8 @@ Landing-page structural revision implemented for user review. This is not final 
 - Narrow centered reading column and conversational intro inspired by the supplied Bishal reference.
 - New monochrome angular logo draws once as a stroke; clicking replays it.
 - Selected work is two numbered text rows with headings and short descriptions. Desktop hover or keyboard focus reveals real screens from opposite sides and changes the viewport background. Escape and leaving the row dismiss the preview.
-- Touch/narrow layouts offer explicit expandable previews, one project at a time.
+- Preview buttons and inline disclosures removed per latest feedback; mobile titles link directly to case studies.
+- Tighter intro/project line-height (1.45), paragraph and section gaps. Click in the heading draws a zigzag underline per activation.
 - Three honest AI experiment placeholders, with more generous spacing.
 - About removed. Never add availability or open-to-work language. Experience and Stack remain excluded.
 - Existing light/dark, opt-in sound, agent summary, and contact controls retained. No new hover sound added in this revision.
@@ -32,3 +33,5 @@ Workflow: https://github.com/maitreyi0002-beep/maitreyi-portfolio/actions/runs/3
 
 ## Next iteration
 Review spacing, intro voice, new logo, and project interactions with Maitreyi. Header/footer and sound refinement are explicitly deferred. Do not rewrite case studies yet. Await actual AI experiment content.
+
+Latest compact revision: source check, build, and JavaScript syntax passed. Previous browser results above refer to the prior revision. Deployment verification pending.

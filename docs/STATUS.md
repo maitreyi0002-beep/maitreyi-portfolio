@@ -39,3 +39,7 @@ Latest compact revision: source check, build, and JavaScript syntax passed. Prev
 ## Latest component revision
 Pixel blossom header, vertical navigation/theme switch, approved 15px intro, persistent cobalt wave underlines, thumbnail project cards, numbered experiment rows, and interactive pixel-water footer implemented. Contact links updated to email/LinkedIn/X/GitHub.
 Browser checked dark desktop and light mobile, semantic theme switch by keyboard, water activation, completed cobalt underline, and 390px layout without overflow. Canopy bottom 165px vs logo top 195px on mobile. Reduced-motion branches checked in source; OS emulation not performed. Full accessibility and real-device audits remain outstanding. Deployed source 6564b8f. Actions run 34961299262 succeeded; live HTML verified with landscape canvas, new script, X link, and no mute control.
+
+## Realistic blossom revision
+User rejected pixel blossoms and supplied a realistic floral reference to mirror horizontally. Replaced the header with a generated transparent cherry branch entering from upper left and tapering right, plus soft curved falling petals. Header bounds retained; water footer unchanged because the supplied reference and request concern the blossom artwork. Asset is site/assets/cherry-blossom-realistic.png, generated with the supplied image as reference.
+Source check, build and landscape JavaScript syntax passed; light header inspected in browser. Deployment pending.

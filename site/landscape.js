@@ -42,35 +42,24 @@
   }
   const noise = (x,y) => { const n=Math.sin(x*127.1+y*311.7)*43758.5453; return n-Math.floor(n); };
   landscape('blossom-canvas',(ctx,s,reduce) => {
-    const unit = s.width < 500 ? 5 : 6;
-    const length = Math.min(s.width*.88,850);
-    const scale = length/850;
-    const dark = document.documentElement.dataset.theme==='dark';
-    const branches = [[-20,28,310,75,11],[260,69,525,47,8],[485,48,805,77,5],[115,48,235,13,6],[312,70,410,112,5],[500,48,600,12,4],[633,61,719,112,4]];
-    const buds = [[170,25],[234,15],[277,69],[343,73],[402,107],[468,48],[535,48],[596,14],[645,65],[713,107],[769,72],[812,78]];
-    ctx.fillStyle = dark ? '#95674f' : '#755342';
-    for(const [x,y,xx,yy,w] of branches) {
-      const distance=Math.hypot(xx-x,yy-y); const count=Math.ceil(distance/unit);
-      for(let i=0;i<=count;i++){ const t=i/count;ctx.fillRect(Math.round((x+(xx-x)*t)*scale/unit)*unit,Math.round((y+(yy-y)*t)/unit)*unit,unit,Math.max(unit,w*(1-t*.4))); }
-    }
-    s.blossoms=[];
-    const colors=dark ? ['#b95e87','#dc8bad','#f2b0cc','#ffe0e8'] : ['#ce779f','#e3a0bd','#f1bfd2','#f7d9e4'];
-    for(const [bx,by] of buds) {
-      for(let dx=-4;dx<=4;dx++)for(let dy=-3;dy<=3;dy++){
-        if(dx*dx/18+dy*dy/11>1 || noise(bx+dx,by+dy)<.2)continue;
-        const x=Math.round((bx*scale+dx*unit)/unit)*unit,y=Math.round((by+dy*unit)/unit)*unit;
-        const color=colors[Math.floor(noise(dx+bx,dy+by)*colors.length)];
-        ctx.fillStyle=color;ctx.fillRect(x,y,unit,unit);s.blossoms.push({x,y,color,size:unit});
-      }
-    }
     const now=performance.now()/1000;
-    s.petals=s.petals.filter(p=>now-p.born<1.7);
-    if(!reduce) for(const p of s.petals){const age=now-p.born;ctx.globalAlpha=Math.max(0,1-age/1.7);ctx.fillStyle=p.color;ctx.fillRect(Math.round((p.x+Math.sin(age*3+p.x)*15+age*12)/unit)*unit,Math.round((p.y+age*40)/unit)*unit,unit,unit);}
-    ctx.globalAlpha=1;s.active=s.petals.length>0;
+    s.petals=s.petals.filter(p=>now-p.born<1.8);
+    if(!reduce) for(const p of s.petals){
+      const age=now-p.born;
+      ctx.save();
+      ctx.globalAlpha=Math.max(0,1-age/1.8);
+      ctx.translate(p.x+Math.sin(age*2+p.x)*12+age*12,p.y+age*32);
+      ctx.rotate(age*1.8+p.x);
+      const tint=ctx.createRadialGradient(0,0,0,0,0,7);
+      tint.addColorStop(0,'#fff0f5');tint.addColorStop(1,'#d88ba6');
+      ctx.fillStyle=tint;ctx.beginPath();ctx.moveTo(0,-6);
+      ctx.bezierCurveTo(7,-6,7,4,0,7);ctx.bezierCurveTo(-5,3,-5,-3,0,-6);ctx.fill();ctx.restore();
+    }
+    s.active=s.petals.length>0;
   },(s,x,y)=>{
-    const nearby=s.blossoms.filter(p=>Math.hypot(p.x-x,p.y-y)<65);
-    const selected=nearby.length?nearby:s.blossoms.filter((_,i)=>i%23===0);
-    s.petals.push(...selected.filter((_,i)=>i%4===0).slice(0,14).map(p=>({...p,born:performance.now()/1000})));s.petals=s.petals.slice(-100);
+    if(y>130)return;
+    for(let i=0;i<4;i++)s.petals.push({x:x+(noise(i,x)-.5)*30,y:Math.min(y,105),born:performance.now()/1000});
+    s.petals=s.petals.slice(-48);
   });
   landscape('water-canvas',(ctx,s,reduce)=>{
     const pixel=s.width<600?8:10;

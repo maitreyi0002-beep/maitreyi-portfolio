@@ -1,6 +1,6 @@
 # Maitreyi's portfolio: shared project memory
 
-Last updated: 2026-09-14. This file records project context, not private chat transcripts or credentials.
+Last updated: 2026-09-15. This file records project context, not private chat transcripts or credentials.
 
 ## Purpose and audience
 The portfolio should convince hiring managers that Maitreyi understands design fundamentals, stays current in AI design, can build with code, studies behavior and psychology, and can own ambiguous problems end to end. Preserve an approachable, curious personal voice.
@@ -22,7 +22,7 @@ Current case studies: `/super-agent` and `/connect` on that domain. The original
 2026-09-14 follow-up: No Experience section on landing page. No How I work / Stack on landing page. A separate page is planned. Public email: maitreyi0002@gmail.com.
 
 ## Current page order
-Header -> compact introduction with logo -> two selected projects -> three AI experiment placeholders -> short about section -> email/LinkedIn/resume contact.
+Header -> narrow conversational introduction with new monochrome stroke logo -> numbered project text rows with peripheral hover previews -> three spaced experiment placeholders -> existing contact footer. No About, Experience, Stack, or availability language.
 
 ## Confirmed content sources
 Super Agent: four specialized AI products consolidated into one entry point; behavioral research, interaction design, design systems. Connect: 22 workflows, six reusable patterns, 50+ connectors. These are existing portfolio claims, not independently validated results. Do not invent post-launch improvements.
@@ -43,3 +43,11 @@ The repository is the source of truth. Maintain AGENTS.md, CLAUDE.md, this memor
 Live: https://maitreyi0002-beep.github.io/maitreyi-portfolio/
 Repository: https://github.com/maitreyi0002-beep/maitreyi-portfolio
 GitHub Pages deployment verified on 2026-09-14. Source and cross-agent memory are committed together. Vercel configuration is included for optional migration. First version awaits Maitreyi's visual feedback; do not treat publication as final design approval.
+
+## Latest steering: 2026-09-15 (supersedes earlier conflicting decisions)
+- Follow Bishal screenshot for side margins, narrow intro and natural first-person tone.
+- Replace the face with supplied angular zigzag shape; black and white only; one stroke drawing into the completed mark, no blink or greeting.
+- NEVER mention open to work or any equivalent availability language anywhere in public content.
+- Work becomes heading + two-line description, with project-colored full-page background and screenshots sliding in/out at the sides on hover.
+- Keep three experiments, improve section spacing. Remove Person behind the pixels / About entirely.
+- Header and footer will be refined later. Sound design is also postponed. Keep case studies unchanged.

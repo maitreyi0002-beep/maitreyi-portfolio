@@ -27,3 +27,11 @@ Do not fabricate experience dates, tool lists, outcomes, or demo projects. Portf
 
 ## 2026-09-14: first version published (implementation)
 Created maitreyi0002-beep/maitreyi-portfolio and deployed to GitHub Pages. Repository contains source and portable handoff context. Verified successful deployment plus HTTP 200 and expected content for homepage, agent page, raw summary, and logo. A later documentation-only commit records deployment results. User approval of visual direction is still pending.
+
+## 2026-09-15: structural revision (user)
+The current decisions override the 2026-09-14 visual, logo, availability, and About choices. Narrow the centered reading column to match Bishal, with first-person paragraphs and a signature. Replace large inline case-study cards with numbered headings and short summaries, changing the whole background to project colors while screens slide in from the viewport sides. Preserve three experiment placeholders with more breathing room. Remove About and all availability messaging. Leave sound, top navigation, and footer refinements for later.
+
+## 2026-09-15: implementation details
+Use a 520px desktop content column (568px outer shell), 17px conversational intro, and a 36px Georgia heading to match the supplied serif reference. This explicit reference overrides the default sans display recommendation. The new supplied angular mark is faithfully redrawn as a filled vector under an animated single-path mask; the reveal lasts 1.8 seconds once, with click replay. Only black or white. Reduced motion shows the complete mark immediately.
+
+Above 1100px with a hover-capable pointer, focus/hover on a project triggers a fixed clipped scene: two actual project images slide from opposite sides over a project-specific cyan/teal backdrop. Text stays unobstructed. Escape, pointer exit, focus exit, window blur, and scrolling the row out of view clear the scene. At smaller widths and on touch, Preview screens expands real images inline and leaves the heading link navigable. Existing sound controls remain; no new project sound design in this revision.

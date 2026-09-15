@@ -1,41 +1,31 @@
 # Current status
 
-Updated: 2026-09-14
+Updated: 2026-09-15
 
 ## Implementation
-First landing-page version implemented and ready for user review. This does not mean the user has approved the design. Continue iterating from this version.
+Landing-page structural revision implemented for user review. This is not final design approval.
 
-- Compact intro with supplied logo rendered as SVG, idle blink, and click greeting.
-- Two actual product previews and links to original case studies.
-- Three honest experiment placeholders.
-- Short About section and confirmed email, LinkedIn, and résumé.
-- Experience and Stack removed per explicit follow-up.
-- Light/dark follows system until manually chosen; preference persists.
-- Sounds default off; opt-in preference persists. Low-volume synthesized feedback.
-- Human-readable agent page, plain-text summary, and working copy action.
-- GitHub Pages workflow and Vercel configuration ready.
-- Cross-agent memory and source provenance documented.
+- Narrow centered reading column and conversational intro inspired by the supplied Bishal reference.
+- New monochrome angular logo draws once as a stroke; clicking replays it.
+- Selected work is two numbered text rows with headings and short descriptions. Desktop hover or keyboard focus reveals real screens from opposite sides and changes the viewport background. Escape and leaving the row dismiss the preview.
+- Touch/narrow layouts offer explicit expandable previews, one project at a time.
+- Three honest AI experiment placeholders, with more generous spacing.
+- About removed. Never add availability or open-to-work language. Experience and Stack remain excluded.
+- Existing light/dark, opt-in sound, agent summary, and contact controls retained. No new hover sound added in this revision.
+- Case studies still link to the original Framer pages.
+- Decisions, source attribution, and cross-agent memory updated.
 
-## Verification completed
-- `npm run check`: local asset paths, page titles, anchors, email, exact experiment count, and absence of excluded sections.
-- `npm run build`: production static output created successfully.
-- `node --check site/app.js`: JavaScript parses successfully.
-- Browser inspection: light and dark desktop; mobile at 390px and 320px. Measured document width equals viewport at 1470px, 390px, and 320px; no horizontal overflow at 320px.
-- Both real preview images loaded successfully.
-- Theme control and persistence verified; sound opt-in/mute states and logo greeting verified. Subjective audio timbre still needs user feedback.
-- Agent page navigation, summary copy success, and return link verified. Mobile agent text stays within viewport.
-- Reduced-motion CSS disables all animation and smooth scrolling; OS-level emulation was not completed.
-- Lighthouse: attempted using native Chrome DevTools; native computer-use control became unavailable before the audit could start. No Lighthouse scores or performance claims are asserted.
-- A complete accessibility audit and real-device testing remain future checks, beyond the completed browser inspection.
+## Verification
+- `npm run check`, `npm run build`, and JavaScript syntax checks passed.
+- Desktop browser: both project focus previews, project background changes, Escape reset, and completed logo stroke checked. Both descriptions occupy two lines at 1280px.
+- Mobile browser: expanded previews, exclusive expansion, and no horizontal overflow at 390px and 320px checked. Desktop width also matched viewport at 1280px.
+- Reduced-motion CSS disables transitions and presents the completed mark; OS-level emulation not performed.
+- A full accessibility audit and real-device testing remain outstanding. No Lighthouse score is claimed.
 
 ## Deployment
-GitHub repository created: https://github.com/maitreyi0002-beep/maitreyi-portfolio
-Public repository contains the requested portable source and project context. No credentials, local reference downloads, or unrelated files are included. GitHub Pages deployment succeeded. Live URL: https://maitreyi0002-beep.github.io/maitreyi-portfolio/
+Repository: https://github.com/maitreyi0002-beep/maitreyi-portfolio
+Live URL: https://maitreyi0002-beep.github.io/maitreyi-portfolio/
+This revision is awaiting deployment verification.
 
-Verified production routes return HTTP 200 and expected content: homepage, agents/, llms.txt, and assets/logo.svg. The live homepage also loaded in the browser with correct relative navigation and system theme.
-
-Deployment workflow: https://github.com/maitreyi0002-beep/maitreyi-portfolio/actions/runs/34878656776
-Deployed source commit: 371d4ff19cbeb42065d416656eaa9a4fe8d4f141. This status-only follow-up does not change the deployed website.
-
-## Next conversation
-Ask for feedback on the live first version, especially intro copy, project presentation, logo scale/motion, sound, and spacing. Do not start case study rewriting or add Experience/Stack to the homepage. New AI experiment content is still needed.
+## Next iteration
+Review spacing, intro voice, new logo, and project interactions with Maitreyi. Header/footer and sound refinement are explicitly deferred. Do not rewrite case studies yet. Await actual AI experiment content.

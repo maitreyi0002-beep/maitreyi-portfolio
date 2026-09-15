@@ -46,6 +46,40 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+    <div class="project-stage" aria-hidden="true">
+      <div class="project-scene scene-agent">
+        <div class="scene-background"></div>
+        <img
+          class="side-screen screen-left"
+          src="assets/agent-screen.png"
+          alt=""
+          width="1024"
+          height="600"
+        /><img
+          class="side-screen screen-right"
+          src="assets/agent-detail.png"
+          alt=""
+          width="1024"
+          height="600"
+        />
+      </div>
+      <div class="project-scene scene-connect">
+        <div class="scene-background"></div>
+        <img
+          class="side-screen screen-left"
+          src="assets/connect-screen.png"
+          alt=""
+          width="1024"
+          height="600"
+        /><img
+          class="side-screen screen-right"
+          src="assets/connect-detail.png"
+          alt=""
+          width="1024"
+          height="600"
+        />
+      </div>
+    </div>
     <div class="page-shell">
       <header class="site-header">
         <a class="wordmark" href="#home" aria-label="Maitreyi, back to top"
@@ -53,7 +87,6 @@
         >
         <nav aria-label="Main navigation">
           <a href="#work">Work</a>
-          <a href="#about">About</a>
           <a href="#connect">Connect</a>
         </nav>
         <div class="preferences">
@@ -89,134 +122,159 @@
       <main id="main">
         <section class="hero" id="home" aria-labelledby="hero-title">
           <button
-            class="logo-character"
-            id="logo-character"
+            class="logo-mark"
+            id="logo-mark"
             type="button"
-            aria-label="Say hello to Maitreyi's logo"
+            aria-label="Replay logo drawing"
           >
-            <svg viewBox="100 80 490 560" fill="none" aria-hidden="true">
+            <svg viewBox="120 290 960 620" fill="none" aria-hidden="true">
+              <defs>
+                <mask
+                  id="logo-reveal"
+                  maskUnits="userSpaceOnUse"
+                  x="100"
+                  y="260"
+                  width="1000"
+                  height="700"
+                >
+                  <path
+                    class="logo-stroke"
+                    d="M184 565 384 366 258 832 662 366 537 832 940 366 815 832 1015 634"
+                    pathLength="1"
+                    stroke="white"
+                    stroke-width="200"
+                    stroke-linecap="square"
+                    stroke-linejoin="bevel"
+                  />
+                </mask>
+              </defs>
               <path
-                class="logo-hair"
-                d="M184 116C257 130 268 262 246 356C229 438 192 461 165 433C124 390 183 246 246 190C304 140 359 153 381 212C407 280 395 384 362 427C328 469 302 433 319 369C338 298 393 201 451 174C546 126 561 303 498 438"
-                stroke="currentColor"
-                stroke-width="22"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <g class="logo-eyes" fill="currentColor">
-                <ellipse cx="192" cy="520" rx="27" ry="27" />
-                <ellipse cx="478" cy="520" rx="27" ry="27" />
-              </g>
-              <path
-                class="logo-mouth"
-                d="M296 599H378"
-                stroke="currentColor"
-                stroke-width="23"
-                stroke-linecap="round"
+                d="M156 537 352 332 419 400 346 665 631 332 697 400 624 665 909 332 975 400 902 665 986 604 1044 664 846 868 780 799 853 536 568 868 501 799 573 536 291 868 224 799 306 500 213 596Z"
+                fill="currentColor"
+                mask="url(#logo-reveal)"
               />
             </svg>
-            <span class="logo-greeting" aria-hidden="true">Oh, hello!</span>
           </button>
-          <p class="intro-label">
-            Hi, I’m Maitreyi. A product designer who builds.
-          </p>
-          <h1 id="hero-title">
-            Curious about people.<br />Thoughtful about AI.
-          </h1>
-          <p class="hero-description">
-            I bring behavioral research, thoughtful interaction design, and code
-            to ambiguous problems, from the first question to the working
-            product.
-          </p>
-          <div class="hero-footer">
-            <a class="text-link" href="#work"
-              >Explore my work <span aria-hidden="true">↓</span></a
-            ><span class="availability"
-              ><span aria-hidden="true"></span> Open to design
-              opportunities</span
-            >
+          <h1 id="hero-title">There’s a person<br />behind that click.</h1>
+          <div class="intro-copy">
+            <p>
+              I’m Maitreyi, a product designer. I care about why someone
+              hesitates, what they expect to happen, and the small details that
+              help things make sense.
+            </p>
+            <p>
+              I work on AI products and the systems around them. I like taking
+              an unclear problem, asking better questions, and building my way
+              toward an answer.
+            </p>
+            <p>
+              Behavior and psychology are a big part of how I think. Code is
+              part of how I work. I want to understand the person using the
+              product and stay close to what actually gets built.
+            </p>
           </div>
+          <p class="signature">
+            Maitreyi<span>Product designer / builder</span>
+          </p>
         </section>
 
         <section id="work" class="work-section" aria-labelledby="work-title">
           <div class="section-heading">
             <h2 id="work-title">Selected work</h2>
-            <span class="section-note"
-              >Research, systems & the details in between</span
-            >
           </div>
-          <article class="project">
-            <a
-              class="project-link"
-              href="https://uxmaitreyii.framer.website/super-agent"
-              aria-labelledby="agent-title"
-              aria-describedby="agent-description"
-            >
-              <div class="project-image agent-image">
-                <img
-                  src="assets/agent-detail.png"
-                  width="1024"
-                  height="627"
-                  alt="Super Agent's unified conversational entry point, with one input for questions and tasks"
-                  fetchpriority="high"
-                /><span class="project-open" aria-hidden="true"
-                  >Read case study <span>↗</span></span
-                >
-              </div>
-              <div class="project-caption">
-                <div>
-                  <p class="project-category">Loop / AI product design</p>
-                  <h3 id="agent-title">Four agents. One front door.</h3>
+          <div class="project-list">
+            <article class="project" data-project="agent">
+              <span class="project-number" aria-hidden="true">01</span>
+              <div class="project-content">
+                <a
+                  class="project-link"
+                  href="https://uxmaitreyii.framer.website/super-agent"
+                  aria-describedby="agent-description"
+                  ><h3>
+                    Super Agent<span class="project-arrow" aria-hidden="true"
+                      >↗</span
+                    >
+                  </h3>
                   <p id="agent-description">
-                    Helping people get things done without having to figure out
-                    which AI to ask.
-                  </p>
-                </div>
-                <span class="project-arrow" aria-hidden="true">↗</span>
-              </div>
-            </a>
-            <div class="project-facts">
-              <span>Behavioral research</span><span>Agentic interactions</span
-              ><span>Design systems</span>
-            </div>
-          </article>
-          <article class="project">
-            <a
-              class="project-link"
-              href="https://uxmaitreyii.framer.website/connect"
-              aria-labelledby="connect-title"
-              aria-describedby="connect-description"
-            >
-              <div class="project-image connect-image">
-                <img
-                  src="assets/connect-detail.png"
-                  width="1024"
-                  height="595"
-                  alt="Loop Connect interface showing data sources and their connection status in one consistent experience"
-                  loading="lazy"
-                /><span class="project-open" aria-hidden="true"
-                  >Read case study <span>↗</span></span
+                    Four AI agents, one conversation. Helping people get things
+                    done without choosing which assistant to ask.
+                  </p></a
+                ><button
+                  class="preview-button"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="agent-preview"
                 >
-              </div>
-              <div class="project-caption">
-                <div>
-                  <p class="project-category">Loop / Onboarding & systems</p>
-                  <h3 id="connect-title">50+ connectors. A common language.</h3>
-                  <p id="connect-description">
-                    Turning 22 different workflows into six reusable patterns
-                    for a clearer onboarding experience.
-                  </p>
+                  Preview screens <span aria-hidden="true">+</span>
+                </button>
+                <div class="mobile-preview" id="agent-preview" hidden>
+                  <img
+                    src="assets/agent-detail.png"
+                    width="1024"
+                    height="627"
+                    alt="Super Agent: main product interface"
+                    loading="lazy"
+                  /><img
+                    src="assets/agent-screen.png"
+                    width="1024"
+                    height="567"
+                    alt="Super Agent: a visual direction explored for the unified input"
+                    loading="lazy"
+                  /><a
+                    class="text-link"
+                    href="https://uxmaitreyii.framer.website/super-agent"
+                    >Read case study ↗</a
+                  >
                 </div>
-                <span class="project-arrow" aria-hidden="true">↗</span>
               </div>
-            </a>
-            <div class="project-facts">
-              <span>Product thinking</span><span>Information architecture</span
-              ><span>Scalable patterns</span>
-            </div>
-          </article>
+            </article>
+            <article class="project" data-project="connect">
+              <span class="project-number" aria-hidden="true">02</span>
+              <div class="project-content">
+                <a
+                  class="project-link"
+                  href="https://uxmaitreyii.framer.website/connect"
+                  aria-describedby="connect-description"
+                  ><h3>
+                    Connect<span class="project-arrow" aria-hidden="true"
+                      >↗</span
+                    >
+                  </h3>
+                  <p id="connect-description">
+                    One onboarding system for 50+ connectors, turning 22
+                    different workflows into six familiar patterns.
+                  </p></a
+                ><button
+                  class="preview-button"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="connect-preview"
+                >
+                  Preview screens <span aria-hidden="true">+</span>
+                </button>
+                <div class="mobile-preview" id="connect-preview" hidden>
+                  <img
+                    src="assets/connect-detail.png"
+                    width="1024"
+                    height="595"
+                    alt="Connect: main product interface"
+                    loading="lazy"
+                  /><img
+                    src="assets/connect-screen.png"
+                    width="1024"
+                    height="643"
+                    alt="Connect: the connector selection interface"
+                    loading="lazy"
+                  /><a
+                    class="text-link"
+                    href="https://uxmaitreyii.framer.website/connect"
+                    >Read case study ↗</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
         </section>
-
         <section
           class="experiments-section"
           id="experiments"
@@ -254,28 +312,6 @@
               </div>
               <span class="soon">Coming soon</span>
             </div>
-          </div>
-        </section>
-
-        <section class="about-section" id="about" aria-labelledby="about-title">
-          <div class="section-heading">
-            <h2 id="about-title">The person behind the pixels</h2>
-          </div>
-          <div class="about-copy">
-            <p>
-              I’m drawn to the messy beginning of a problem. The unclear brief,
-              the unexpected behavior, the question nobody has asked yet.
-            </p>
-            <p>
-              Psychology and behavioral research help me understand who I’m
-              designing for. Design fundamentals help me make things clear. Code
-              lets me put an idea in someone’s hands and learn from what
-              happens.
-            </p>
-            <p>
-              Outside of work, I collect hobbies, plan treasure hunts for
-              friends, and usually have another side project on my mind.
-            </p>
           </div>
         </section>
 

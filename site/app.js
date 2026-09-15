@@ -106,25 +106,96 @@ soundButton?.addEventListener("click", () => {
 document.addEventListener("click", (event) => {
   if (
     event.target.closest("a,button") &&
-    !event.target.closest("#sound-toggle,#logo-character")
+    !event.target.closest("#sound-toggle,#logo-mark")
   )
     playTone();
 });
-document.querySelectorAll(".project-link").forEach((link) =>
-  link.addEventListener("pointerenter", () => {
-    if (audioContext?.state === "running") playTone("hover");
-  }),
-);
-const logo = document.querySelector("#logo-character");
-let greetingTimer;
-logo?.addEventListener("click", () => {
-  clearTimeout(greetingTimer);
-  logo.classList.add("is-greeting");
-  playTone("hello");
-  if (announcement)
-    announcement.textContent = "Oh, hello! Thanks for stopping by.";
-  greetingTimer = setTimeout(() => logo.classList.remove("is-greeting"), 1800);
+// A new mark replaces the face. Replay switches between identical draw animations.
+const logo = document.querySelector("#logo-mark");
+logo?.addEventListener("click", () => logo.classList.toggle("replay"));
+
+// Wide, fine-pointer screens use peripheral previews; touch gets explicit disclosure.
+const widePreview = matchMedia("(min-width:1101px) and (hover:hover)");
+const projects = [...document.querySelectorAll("[data-project]")];
+let hoveredProject = null;
+let focusedProject = null;
+const syncPreview = () => {
+  const project = widePreview.matches && (hoveredProject || focusedProject);
+  if (project) root.dataset.preview = project.dataset.project;
+  else delete root.dataset.preview;
+};
+projects.forEach((project) => {
+  project.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "touch") return;
+    hoveredProject = project;
+    syncPreview();
+  });
+  project.addEventListener("pointerleave", () => {
+    hoveredProject = null;
+    syncPreview();
+  });
+  project.addEventListener("focusin", () => {
+    focusedProject = project;
+    syncPreview();
+  });
+  project.addEventListener("focusout", (event) => {
+    if (!project.contains(event.relatedTarget)) {
+      focusedProject = null;
+      syncPreview();
+    }
+  });
+  const button = project.querySelector(".preview-button");
+  const panel = project.querySelector(".mobile-preview");
+  button.addEventListener("click", () => {
+    const opening = button.getAttribute("aria-expanded") !== "true";
+    projects.forEach((other) => {
+      other
+        .querySelector(".preview-button")
+        .setAttribute("aria-expanded", "false");
+      other.querySelector(".preview-button").innerHTML =
+        'Preview screens <span aria-hidden="true">+</span>';
+      other.querySelector(".mobile-preview").hidden = true;
+    });
+    button.setAttribute("aria-expanded", String(opening));
+    button.innerHTML = opening
+      ? 'Hide screens <span aria-hidden="true">−</span>'
+      : 'Preview screens <span aria-hidden="true">+</span>';
+    panel.hidden = !opening;
+  });
 });
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  hoveredProject = focusedProject = null;
+  syncPreview();
+  projects.forEach((project) => {
+    const button = project.querySelector(".preview-button");
+    const panel = project.querySelector(".mobile-preview");
+    if (!panel.hidden && panel.contains(document.activeElement)) button.focus();
+    button.setAttribute("aria-expanded", "false");
+    button.innerHTML = 'Preview screens <span aria-hidden="true">+</span>';
+    panel.hidden = true;
+  });
+});
+widePreview.addEventListener("change", () => {
+  hoveredProject = focusedProject = null;
+  syncPreview();
+});
+window.addEventListener("blur", () => {
+  hoveredProject = focusedProject = null;
+  syncPreview();
+});
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) =>
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        if (hoveredProject === entry.target) hoveredProject = null;
+        if (focusedProject === entry.target) focusedProject = null;
+        syncPreview();
+      }
+    }),
+  );
+  projects.forEach((project) => observer.observe(project));
+}
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
 document

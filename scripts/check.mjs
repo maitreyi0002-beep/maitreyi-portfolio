@@ -50,3 +50,31 @@ assert.match(homepage, /mailto:maitreyi0002@gmail.com/);
 console.log(
   "Page titles, local files, anchors, requested scope, and contact verified.",
 );
+
+assert.ok(
+  !homepage.includes('id="about"'),
+  "About must remain off the landing page",
+);
+for (const path of ["index.html", "agents/index.html", "llms.txt"]) {
+  const content = (await readFile(resolve(root, path), "utf8")).replace(
+    /\s+/g,
+    " ",
+  );
+  assert.ok(
+    !/open to (work|design|opportunit)|available for work/i.test(content),
+    `${path}: availability language is prohibited`,
+  );
+}
+assert.ok(
+  homepage.includes('class="logo-stroke"'),
+  "Use the new stroke-drawn mark",
+);
+assert.ok(!homepage.includes("logo-eyes"), "The face logo is retired");
+assert.equal(
+  (homepage.match(/data-project="/g) || []).length,
+  2,
+  "Keep two project rows",
+);
+console.log(
+  "Revised logo, text-only project list, and content exclusions verified.",
+);

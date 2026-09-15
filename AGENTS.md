@@ -7,7 +7,10 @@ Read `PROJECT_MEMORY.md`, `docs/DECISIONS.md`, and `docs/STATUS.md` before makin
 - Keep Experience and How I work / Stack OFF the landing page. A separate page is planned but not commissioned for this version.
 - Audience: hiring managers. Position Maitreyi as strong in fundamentals, thoughtful about human behavior, capable in AI design and code, and able to own ambiguous problems end to end.
 - Keep exactly three honest AI experiment placeholders until Maitreyi supplies content.
-- Use the supplied logo shape. The SVG is a faithful code rendition with independently animated eyes. Do not replace it with a generic monogram.
+- Use the NEW angular zigzag logo supplied 2026-09-15, black/white only, revealed by one drawing stroke. The earlier face/eyes logo is retired.
+- Never display availability or hiring-status language (including open to work or open to opportunities) anywhere on the website or public agent summary.
+- No About / Person behind the pixels section. Selected work is a numbered text list with heading and two-line summary, full-page project colors and lateral screens on desktop hover/focus, explicit mobile previews.
+- Match the supplied Bishal reference: narrow centered reading column, generous side margins, conversational paragraph intro and signature. Header/footer refinements and sound design are deferred.
 - Keep light/dark modes, optional interaction sounds, agent-readable text, and mobile behavior.
 - Public contact email is `maitreyi0002@gmail.com`.
 - GitHub / Vercel are the requested homes. Do not move this project to a proprietary hosting platform.

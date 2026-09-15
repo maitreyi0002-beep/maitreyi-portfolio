@@ -76,5 +76,5 @@ assert.equal(
   "Keep two project rows",
 );
 console.log(
-  "Revised logo, text-only project list, and content exclusions verified.",
+  "Revised logo, project cards, and content exclusions verified.",
 );

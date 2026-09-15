@@ -43,6 +43,7 @@
     </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
+    <script src="landscape.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -80,44 +81,14 @@
         />
       </div>
     </div>
+    <button class="blossom-canopy" type="button" aria-label="Scatter cherry blossom petals"><canvas id="blossom-canvas" aria-hidden="true"></canvas></button>
     <div class="page-shell">
       <header class="site-header">
-        <a class="wordmark" href="#home" aria-label="Maitreyi, back to top"
-          >maitreyi<span aria-hidden="true">.</span></a
-        >
         <nav aria-label="Main navigation">
-          <a href="#work">Work</a>
-          <a href="#connect">Connect</a>
+          <a href="#work">Work</a><a href="#connect">Contact</a>
+          <a class="agent-toggle" href="agents/">For agents</a>
+          <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="theme-track" aria-hidden="true"><span></span></span><span class="theme-label">Dark</span></button>
         </nav>
-        <div class="preferences">
-          <a
-            class="agent-toggle"
-            href="agents/"
-            aria-label="Read portfolio in agent mode"
-            ><span aria-hidden="true">{ }</span> For agents</a
-          >
-          <button
-            class="icon-button"
-            id="sound-toggle"
-            type="button"
-            aria-label="Enable interaction sounds"
-            aria-pressed="false"
-            title="Sound off"
-          >
-            <span class="sound-bars" aria-hidden="true"
-              ><i></i><i></i><i></i><i></i
-            ></span>
-          </button>
-          <button
-            class="icon-button"
-            id="theme-toggle"
-            type="button"
-            aria-label="Switch color theme"
-            title="Switch color theme"
-          >
-            <span class="theme-symbol" aria-hidden="true"></span>
-          </button>
-        </div>
       </header>
       <main id="main">
         <section class="hero" id="home" aria-labelledby="hero-title">
@@ -155,24 +126,8 @@
               />
             </svg>
           </button>
-          <h1 id="hero-title">There’s a person<br />behind that <button class="click-word" type="button" title="Draw the underline">click<svg viewBox="0 0 100 12" aria-hidden="true"><path d="M2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9" pathLength="1" /></svg></button>.</h1>
-          <div class="intro-copy">
-            <p>
-              I’m Maitreyi, a product designer. I care about why someone
-              hesitates, what they expect to happen, and the small details that
-              help things make sense.
-            </p>
-            <p>
-              I work on AI products and the systems around them. I like taking
-              an unclear problem, asking better questions, and building my way
-              toward an answer.
-            </p>
-            <p>
-              Behavior and psychology are a big part of how I think. Code is
-              part of how I work. I want to understand the person using the
-              product and stay close to what actually gets built.
-            </p>
-          </div>
+          <h1 id="hero-title">There’s a person<br />behind that <button class="click-word" type="button" title="Make a wave">click<svg viewBox="0 0 100 12" aria-hidden="true"><path d="M-30 9 -22 3 -14 9 -6 3 2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9 106 3 114 9 122 3 130 9" pathLength="1" /></svg></button>.</h1>
+          <div class="intro-copy"><p>I’m Maitreyi, a product designer curious about the person behind the screen. I look at how people think, what makes them hesitate, and what helps them feel confident.</p><p>I work across AI products, design systems, and code. I enjoy turning an ambiguous problem into something clear and useful, staying close from the first question to the final build.</p></div>
           <p class="signature">
             Maitreyi<span>Product designer / builder</span>
           </p>
@@ -180,11 +135,11 @@
 
         <section id="work" class="work-section" aria-labelledby="work-title">
           <div class="section-heading">
-            <h2 id="work-title">Selected work</h2>
+            <h2 id="work-title"><span class="section-pill">Projects</span><span class="section-note">Selected work</span></h2>
           </div>
           <div class="project-list">
             <article class="project" data-project="agent">
-              <span class="project-number" aria-hidden="true">01</span>
+              <img class="project-thumb" src="assets/agent-detail.png" alt="" width="80" height="80" loading="lazy" />
               <div class="project-content">
                 <a
                   class="project-link"
@@ -203,7 +158,7 @@
               </div>
             </article>
             <article class="project" data-project="connect">
-              <span class="project-number" aria-hidden="true">02</span>
+              <img class="project-thumb" src="assets/connect-detail.png" alt="" width="80" height="80" loading="lazy" />
               <div class="project-content">
                 <a
                   class="project-link"
@@ -229,66 +184,59 @@
           aria-labelledby="experiments-title"
         >
           <div class="section-heading">
-            <h2 id="experiments-title">Small builds, big curiosity</h2>
-            <span class="section-note">AI experiments</span>
+            <h2 id="experiments-title">Latest experiments</h2>
           </div>
-          <p class="section-description">
-            A space for ideas I can’t leave on the drawing board.
-          </p>
+
           <div class="experiment-list">
             <div class="experiment">
-              <span class="experiment-symbol" aria-hidden="true">{ }</span>
+              <span class="experiment-number" aria-hidden="true">01</span>
               <div>
-                <h3>Experiment 01</h3>
+                <h3>Experiment 01<span class="soon">Coming soon</span></h3>
                 <p>A little room for what’s next.</p>
               </div>
-              <span class="soon">Coming soon</span>
+
             </div>
             <div class="experiment">
-              <span class="experiment-symbol" aria-hidden="true">[ ]</span>
+              <span class="experiment-number" aria-hidden="true">02</span>
               <div>
-                <h3>Experiment 02</h3>
+                <h3>Experiment 02<span class="soon">Coming soon</span></h3>
                 <p>A little room for what’s next.</p>
               </div>
-              <span class="soon">Coming soon</span>
+
             </div>
             <div class="experiment">
-              <span class="experiment-symbol" aria-hidden="true">( )</span>
+              <span class="experiment-number" aria-hidden="true">03</span>
               <div>
-                <h3>Experiment 03</h3>
+                <h3>Experiment 03<span class="soon">Coming soon</span></h3>
                 <p>A little room for what’s next.</p>
               </div>
-              <span class="soon">Coming soon</span>
+
             </div>
           </div>
         </section>
 
+      </main>
+    </div>
         <footer id="connect" class="contact-section">
-          <p class="intro-label">Have a thoughtful problem to solve?</p>
+          <div class="contact-inner">
+
           <h2>Let’s make something<br />make sense.</h2>
           <div class="contact-links">
             <a href="mailto:maitreyi0002@gmail.com"
-              >maitreyi0002@gmail.com <span aria-hidden="true">↗</span></a
-            ><a
+              >maitreyi0002@gmail.com <svg class="link-wave" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M-30 9 -22 3 -14 9 -6 3 2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9 106 3 114 9 122 3 130 9" /></svg></a><a
               href="https://www.linkedin.com/in/maitreyii/"
               target="_blank"
               rel="noopener noreferrer"
-              >LinkedIn <span aria-hidden="true">↗</span></a
-            ><a
-              href="https://drive.google.com/file/d/1aqnmQG7KNsAOaFF82FMRpJ2zBPduf_5s/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Résumé <span aria-hidden="true">↗</span></a
-            >
+              >LinkedIn <svg class="link-wave" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M-30 9 -22 3 -14 9 -6 3 2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9 106 3 114 9 122 3 130 9" /></svg></a><a href="https://x.com/maitreyi0002" target="_blank" rel="noopener noreferrer">X<svg class="link-wave" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M-30 9 -22 3 -14 9 -6 3 2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9 106 3 114 9 122 3 130 9" /></svg></a><a href="https://github.com/maitreyi0002-beep" target="_blank" rel="noopener noreferrer">GitHub<svg class="link-wave" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M-30 9 -22 3 -14 9 -6 3 2 9 10 3 18 9 26 3 34 9 42 3 50 9 58 3 66 9 74 3 82 9 90 3 98 9 106 3 114 9 122 3 130 9" /></svg></a>
+          </div>
           </div>
           <div class="footer-bottom">
             <span>Made with care & curiosity.</span
             ><span>© <span id="year">2026</span> Maitreyi</span
             ><a href="#home">Back to top ↑</a>
           </div>
+          <button class="water-surface" type="button" aria-label="Make ripples in the pixel water"><canvas id="water-canvas" aria-hidden="true"></canvas></button>
         </footer>
-      </main>
-    </div>
     <div
       class="sr-only"
       id="announcement"

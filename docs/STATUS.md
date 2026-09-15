@@ -35,3 +35,7 @@ Workflow: https://github.com/maitreyi0002-beep/maitreyi-portfolio/actions/runs/3
 Review spacing, intro voice, new logo, and project interactions with Maitreyi. Header/footer and sound refinement are explicitly deferred. Do not rewrite case studies yet. Await actual AI experiment content.
 
 Latest compact revision: source check, build, and JavaScript syntax passed. Previous browser results above refer to the prior revision. Desktop activation and completed underline verified in browser; 390px mobile screenshot inspected with no overflow. GitHub Actions run 34944425600 succeeded for source 70dda5d. Live HTML verified with click-word and no preview-button.
+
+## Latest component revision
+Pixel blossom header, vertical navigation/theme switch, approved 15px intro, persistent cobalt wave underlines, thumbnail project cards, numbered experiment rows, and interactive pixel-water footer implemented. Contact links updated to email/LinkedIn/X/GitHub.
+Browser checked dark desktop and light mobile, semantic theme switch by keyboard, water activation, completed cobalt underline, and 390px layout without overflow. Canopy bottom 165px vs logo top 195px on mobile. Reduced-motion branches checked in source; OS emulation not performed. Full accessibility and real-device audits remain outstanding. Current deployment pending.

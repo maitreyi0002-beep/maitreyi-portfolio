@@ -25,6 +25,10 @@ const setTheme = (theme) => {
       "aria-label",
       `Switch to ${theme === "dark" ? "light" : "dark"} theme`,
     );
+    if (themeButton.getAttribute("role") === "switch") {
+      themeButton.setAttribute("aria-label", "Dark theme");
+      themeButton.setAttribute("aria-checked", String(theme === "dark"));
+    }
     themeButton.title = themeButton.getAttribute("aria-label");
   }
   document
@@ -45,7 +49,7 @@ systemTheme.addEventListener("change", (event) => {
 });
 
 // Short, low-volume tactile tones are synthesized locally. No audio downloads or tracking.
-let soundEnabled = getPreference("maitreyi-sound") === "on";
+let soundEnabled = false; // Sound design deferred; no mute control or hidden audio preference.
 let audioContext;
 let lastTone = 0;
 const syncSound = () => {
@@ -198,14 +202,12 @@ document
     }
   });
 
-const clickWord = document.querySelector(".click-word");
-clickWord?.addEventListener("click", () => {
-  const path = clickWord.querySelector("path");
+document.querySelectorAll(".click-word, .contact-links a").forEach((link) => link.addEventListener("click", () => {
+  const path = link.querySelector("path");
   path.getAnimations().forEach((animation) => animation.cancel());
-  clickWord.classList.add("is-drawn");
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    path.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], {
-      duration: 600, easing: "ease-out", fill: "both"
+    path.animate([{ transform: "translateX(0)" }, { transform: "translateX(-16px)" }], {
+      duration: 260, iterations: 3, easing: "linear"
     });
   }
-});
+}));

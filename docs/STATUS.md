@@ -43,3 +43,6 @@ Browser checked dark desktop and light mobile, semantic theme switch by keyboard
 ## Realistic blossom revision
 User rejected pixel blossoms and supplied a realistic floral reference to mirror horizontally. Replaced the header with a generated transparent cherry branch entering from upper left and tapering right, plus soft curved falling petals. Header bounds retained; water footer unchanged because the supplied reference and request concern the blossom artwork. Asset is site/assets/cherry-blossom-realistic.png, generated with the supplied image as reference.
 Source check, build and landscape JavaScript syntax passed; light header inspected in browser. Deployment dceacb3 succeeded (Actions 34962974271); live HTML verified with realistic image asset. Mobile check interrupted by navigation, not claimed for this revision.
+
+## Latest correction: restore pixel blossoms
+User rejected the realistic branch. Restore pixel branch and falling squares with six additional blossom clusters. Remove realistic asset from shipped site. Main heading reduced by 4px: 32px desktop, 35px mobile, 30px narrow mobile, ending in three dots. Work section has only Selected work; no Projects pill. Other components unchanged.

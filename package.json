@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/sync-agent.mjs --check && node scripts/check.mjs",
+    "sync:agents": "node scripts/sync-agent.mjs"
   },
   "engines": {
     "node": ">=20"

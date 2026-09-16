@@ -191,6 +191,7 @@ document
       setTimeout(() => (button.textContent = "Copy summary"), 2000);
     } catch {
       button.textContent = "Select text to copy";
+      document.querySelector("#profile-text").hidden = false;
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(document.querySelector("#profile-text"));

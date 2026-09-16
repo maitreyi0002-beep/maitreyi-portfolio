@@ -1,33 +1,27 @@
-# Maitreyi | Product Designer
+# Maitreyi | Product designer
 
-## Profile
-Maitreyi is a product designer interested in human behavior and psychology, with a practice spanning research, interaction design, design systems, AI products, and working code prototypes. She is interested in owning ambiguous problems from discovery through implementation.
+## There’s a person behind that click...
+I’m Maitreyi, a product designer curious about the person behind the screen. I look at how people think, what makes them hesitate, and what helps them feel confident.
+
+I work across AI products, design systems, and code. I enjoy turning an ambiguous problem into something clear and useful, staying close from the first question to the final build.
 
 ## Selected work
 
-### Super Agent, Loop
-Focus: behavioral research, agentic interactions, design systems.
-Summary: bringing four specialized AI products into one conversational entry point, so users do not need to choose an assistant before asking a question.
+### Super Agent
+Four AI agents, one conversation. Helping people get things done without choosing which assistant to ask.
 Case study: https://uxmaitreyii.framer.website/super-agent
 
-### Connect, Loop
-Focus: onboarding, information architecture, reusable interaction patterns.
-Summary: organizing 22 different workflows into six reusable patterns for an ecosystem of more than 50 data connectors.
+### Connect
+One onboarding system for 50+ connectors, turning 22 different workflows into six familiar patterns.
 Case study: https://uxmaitreyii.framer.website/connect
 
-## AI experiments
-Three experiments will be added. No experiment content, names, or results have been published on this portfolio yet.
-
-## About
-Maitreyi studies behavior and psychology to understand the person behind the screen. She uses design fundamentals to create clear experiences, and code and AI-assisted tools to build and test ideas.
+## Latest experiments
+Experiment 01 Coming soon: A little room for what’s next.
+Experiment 02 Coming soon: A little room for what’s next.
+Experiment 03 Coming soon: A little room for what’s next.
 
 ## Contact
-Email: maitreyi0002@gmail.com
-LinkedIn: https://www.linkedin.com/in/maitreyii/
-Resume: https://drive.google.com/file/d/1aqnmQG7KNsAOaFF82FMRpJ2zBPduf_5s/view?usp=sharing
-
-## Accuracy
-This summary reflects the public landing page. Employment dates, unverified impact metrics, and shipping status are intentionally not asserted. The linked case studies remain on the previous portfolio while the landing page is redesigned.
-
-X: https://x.com/maitreyi0002
-GitHub: https://github.com/maitreyi0002-beep
+maitreyi0002@gmail.com: mailto:maitreyi0002@gmail.com
+linkedin/in/maitreyii: https://www.linkedin.com/in/maitreyii/
+x/maitreyi0002: https://x.com/maitreyi0002
+github/maitreyi0002-beep: https://github.com/maitreyi0002-beep

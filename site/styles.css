@@ -838,3 +838,11 @@ h1 {
 .contact-links { column-gap:30px; row-gap:14px; }
 .contact-links a { white-space:nowrap; }
 @media(max-width:370px) { .contact-links a { font-size:14px; } }
+
+.synced-agent main { padding-top:0; }
+.synced-agent .hero { padding-top:110px; }
+.synced-agent #hero-title { font-family:Georgia,'Times New Roman',serif; margin:0 0 28px; }
+.synced-agent .agent-toolbar { margin-top:24px; flex-wrap:wrap; }
+.synced-agent main .project-link { text-decoration:none; }
+.synced-agent #profile-text[hidden] { display:none; }
+@media(max-width:767px) { .synced-agent .hero { padding-top:175px; } }

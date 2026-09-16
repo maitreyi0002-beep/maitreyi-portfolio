@@ -7,70 +7,195 @@
     <title>Maitreyi | Portfolio for agents</title>
     <meta
       name="description"
-      content="A concise, plain-text summary of Maitreyi's product design work, approach, and contact details."
+      content="Maitreyi is a product designer who studies human behavior, makes complex AI products easier to use, and takes ambiguous problems from research to working interfaces."
     />
-    <link rel="icon" href="../assets/logo.svg" />
+    <meta property="og:title" content="Maitreyi | Product Designer" />
+    <meta
+      property="og:description"
+      content="Curious about people. Thoughtful about AI. Hands-on with code."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="../assets/logo.svg" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="text/plain"
+      title="Portfolio for agents"
+      href="../llms.txt"
+    />
+    <link
+      rel="preload"
+      href="../assets/geist.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <script>
+      try {
+        const t = localStorage.getItem("maitreyi-theme");
+        document.documentElement.dataset.theme =
+          t ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+      } catch {}
+    </script>
     <link rel="stylesheet" href="../styles.css" />
     <script src="../app.js" defer></script>
+    
   </head>
-  <body class="agent-page">
+  <body class="agent-page synced-agent">
+    <a class="skip-link" href="#main">Skip to content</a>
+    
     <div class="page-shell">
       <header class="site-header">
-        <a class="wordmark" href="../">maitreyi.</a
-        ><a class="text-link" href="../">Back to human view ↗</a
-        ><button
-          class="icon-button"
-          id="theme-toggle"
-          aria-label="Switch color theme"
-          type="button"
-        >
-          <span class="theme-symbol" aria-hidden="true"></span>
-        </button>
+        <nav aria-label="Main navigation">
+          <a href="#work">Work</a><a href="#connect">Contact</a>
+          <a class="agent-toggle" href="../">Human view</a>
+          <button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="theme-track" aria-hidden="true"><span></span></span><span class="theme-label">Dark</span></button>
+        </nav>
       </header>
-      <main>
-        <p class="intro-label">For agents (and people in a hurry)</p>
-        <h1>The essentials, in plain text.</h1>
-        <div class="agent-toolbar">
-          <button class="copy-button" id="copy-profile" type="button">
-            Copy summary</button
-          ><a href="../llms.txt">Open raw text ↗</a>
-        </div>
-        <pre id="profile-text"># Maitreyi | Product Designer
+      <main id="main">
+        <section class="hero" id="home" aria-labelledby="hero-title">
+          
+          <p class="intro-label">For agents · Current portfolio</p><h1 id="hero-title">There’s a person<br />behind that <button class="click-word" type="button" title="Make a wave">click<span class="wave-underline" aria-hidden="true"></span></button>...</h1>
+          <div class="intro-copy"><p>I’m Maitreyi, a product designer curious about the person behind the screen. I look at how people think, what makes them hesitate, and what helps them feel confident.</p><p>I work across AI products, design systems, and code. I enjoy turning an ambiguous problem into something clear and useful, staying close from the first question to the final build.</p></div>
+          <div class="agent-toolbar"><button class="copy-button" id="copy-profile" type="button">Copy summary</button><a href="../llms.txt">Open raw text ↗</a></div><pre id="profile-text" hidden># Maitreyi | Product designer
 
-## Profile
-Maitreyi is a product designer interested in human behavior and psychology, with a practice spanning research, interaction design, design systems, AI products, and working code prototypes. She is interested in owning ambiguous problems from discovery through implementation.
+## There’s a person behind that click...
+I’m Maitreyi, a product designer curious about the person behind the screen. I look at how people think, what makes them hesitate, and what helps them feel confident.
+
+I work across AI products, design systems, and code. I enjoy turning an ambiguous problem into something clear and useful, staying close from the first question to the final build.
 
 ## Selected work
 
-### Super Agent, Loop
-Focus: behavioral research, agentic interactions, design systems.
-Summary: bringing four specialized AI products into one conversational entry point, so users do not need to choose an assistant before asking a question.
+### Super Agent
+Four AI agents, one conversation. Helping people get things done without choosing which assistant to ask.
 Case study: https://uxmaitreyii.framer.website/super-agent
 
-### Connect, Loop
-Focus: onboarding, information architecture, reusable interaction patterns.
-Summary: organizing 22 different workflows into six reusable patterns for an ecosystem of more than 50 data connectors.
+### Connect
+One onboarding system for 50+ connectors, turning 22 different workflows into six familiar patterns.
 Case study: https://uxmaitreyii.framer.website/connect
 
-## AI experiments
-Three experiments will be added. No experiment content, names, or results have been published on this portfolio yet.
-
-## About
-Maitreyi studies behavior and psychology to understand the person behind the screen. She uses design fundamentals to create clear experiences, and code and AI-assisted tools to build and test ideas.
+## Latest experiments
+Experiment 01 Coming soon: A little room for what’s next.
+Experiment 02 Coming soon: A little room for what’s next.
+Experiment 03 Coming soon: A little room for what’s next.
 
 ## Contact
-Email: maitreyi0002@gmail.com
-LinkedIn: https://www.linkedin.com/in/maitreyii/
-Resume: https://drive.google.com/file/d/1aqnmQG7KNsAOaFF82FMRpJ2zBPduf_5s/view?usp=sharing
-
-## Accuracy
-This summary reflects the public landing page. Employment dates, unverified impact metrics, and shipping status are intentionally not asserted. The linked case studies remain on the previous portfolio while the landing page is redesigned.
-
-X: https://x.com/maitreyi0002
-GitHub: https://github.com/maitreyi0002-beep
+maitreyi0002@gmail.com: mailto:maitreyi0002@gmail.com
+linkedin/in/maitreyii: https://www.linkedin.com/in/maitreyii/
+x/maitreyi0002: https://x.com/maitreyi0002
+github/maitreyi0002-beep: https://github.com/maitreyi0002-beep
 </pre>
+          <p class="signature">
+            Maitreyi<span>Product designer / builder</span>
+          </p>
+        </section>
+
+        <section id="work" class="work-section" aria-labelledby="work-title">
+          <div class="section-heading">
+            <h2 id="work-title">Selected work</h2>
+          </div>
+          <div class="project-list">
+            <article class="project">
+              <img class="project-thumb" src="../assets/agent-detail.png" alt="" width="80" height="80" loading="lazy" />
+              <div class="project-content">
+                <a
+                  class="project-link"
+                  href="https://uxmaitreyii.framer.website/super-agent"
+                  aria-describedby="agent-description"
+                  ><h3>
+                    Super Agent<span class="project-arrow" aria-hidden="true"
+                      >↗</span
+                    >
+                  </h3>
+                  <p id="agent-description">
+                    Four AI agents, one conversation. Helping people get things
+                    done without choosing which assistant to ask.
+                  </p></a
+                >
+              </div>
+            </article>
+            <article class="project">
+              <img class="project-thumb" src="../assets/connect-detail.png" alt="" width="80" height="80" loading="lazy" />
+              <div class="project-content">
+                <a
+                  class="project-link"
+                  href="https://uxmaitreyii.framer.website/connect"
+                  aria-describedby="connect-description"
+                  ><h3>
+                    Connect<span class="project-arrow" aria-hidden="true"
+                      >↗</span
+                    >
+                  </h3>
+                  <p id="connect-description">
+                    One onboarding system for 50+ connectors, turning 22
+                    different workflows into six familiar patterns.
+                  </p></a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+        <section
+          class="experiments-section"
+          id="experiments"
+          aria-labelledby="experiments-title"
+        >
+          <div class="section-heading">
+            <h2 id="experiments-title">Latest experiments</h2>
+          </div>
+
+          <div class="experiment-list">
+            <div class="experiment">
+              <span class="experiment-number" aria-hidden="true">01</span>
+              <div>
+                <h3>Experiment 01<span class="soon">Coming soon</span></h3>
+                <p>A little room for what’s next.</p>
+              </div>
+
+            </div>
+            <div class="experiment">
+              <span class="experiment-number" aria-hidden="true">02</span>
+              <div>
+                <h3>Experiment 02<span class="soon">Coming soon</span></h3>
+                <p>A little room for what’s next.</p>
+              </div>
+
+            </div>
+            <div class="experiment">
+              <span class="experiment-number" aria-hidden="true">03</span>
+              <div>
+                <h3>Experiment 03<span class="soon">Coming soon</span></h3>
+                <p>A little room for what’s next.</p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
+        <footer id="connect" class="contact-section">
+          <div class="contact-inner">
+
+          <h2>Let’s make something<br />make sense.</h2>
+          <div class="contact-links">
+            <a href="mailto:maitreyi0002@gmail.com"
+              >maitreyi0002@gmail.com <span class="wave-underline" aria-hidden="true"></span></a><a
+              href="https://www.linkedin.com/in/maitreyii/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >linkedin/in/maitreyii<span class="wave-underline" aria-hidden="true"></span></a><a href="https://x.com/maitreyi0002" target="_blank" rel="noopener noreferrer">x/maitreyi0002<span class="wave-underline" aria-hidden="true"></span></a><a href="https://github.com/maitreyi0002-beep" target="_blank" rel="noopener noreferrer">github/maitreyi0002-beep<span class="wave-underline" aria-hidden="true"></span></a>
+          </div>
+          </div>
+          <div class="footer-bottom">
+            <span>Made with care & curiosity.</span
+            ><span>© <span id="year">2026</span> Maitreyi</span
+            ><a href="#home">Back to top ↑</a>
+          </div>
+          
+        </footer>
     <div
       class="sr-only"
       id="announcement"

@@ -56,3 +56,5 @@ Source 7e7940d deployed, Actions 34964714570 succeeded, live footer IDs and shar
 
 ## 2026-09-16: agent view synchronization
 Agent view is generated from site/index.html with current intro, selected work, experiments, contact IDs and navigation, omitting decorative landscapes and side previews. Removed obsolete About and resume. Raw summary and copy text derive from the same source. Run npm run sync:agents after landing edits; npm run check detects stale generated pages and npm run build regenerates them. Edit scripts/sync-agent.mjs instead of generated agent HTML.
+
+Agent synchronization source 6ca016b deployed successfully (Actions 35074209792). Live agent HTML and llms.txt verified for approved intro, contact IDs, removal of About/resume. Source/build checks passed. Browser verified desktop layout, copy success, light/dark switch and 390px viewport with document width 390px and 15px intro.

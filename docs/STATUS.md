@@ -61,3 +61,5 @@ Agent synchronization source 6ca016b deployed successfully (Actions 35074209792)
 
 ## 2026-09-16: agent mode is literal Markdown
 User clarified agent view must look like an .md document, not a styled clone of the portfolio. Show visible Markdown headings and link syntax in a single monospace text column. No cards, thumbnails, decorative art, animated underlines or portfolio footer. Keep compact Human view, raw Markdown, copy and theme controls. Content remains generated from the current homepage; no About/resume or availability language.
+
+Literal-Markdown revision d81b170 deployed successfully (Actions 35074753632); live HTML confirmed as visible preformatted Markdown with no project cards. Source/build checks, copy action and 390px wrapping passed. Desktop screenshot inspected.

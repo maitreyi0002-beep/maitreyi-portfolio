@@ -29,15 +29,16 @@ const page = `<!doctype html>
 :root[data-theme="light"] { color-scheme:light; --bg:#f7f9fb; --text:#33465b; --muted:#64758a; }
 :root[data-theme="dark"] { color-scheme:dark; --bg:#181818; --text:#d2d7de; --muted:#a6b2c0; }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--text); font:16px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace; }
-main { max-width:850px; margin:auto; padding:44px 28px 80px; }
+body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; }
+main { max-width:568px; margin:auto; padding:44px 24px 80px; }
 nav { display:flex; flex-wrap:wrap; gap:12px 24px; margin-bottom:40px; font-size:13px; }
 a,button { color:var(--muted); }
 a { text-decoration:underline; text-underline-offset:3px; }
 button { padding:0; border:0; background:none; font:inherit; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
 a:focus-visible,button:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 pre { margin:0; font:inherit; white-space:pre-wrap; overflow-wrap:anywhere; }
-@media(max-width:600px) { main { padding:28px 20px 50px; } body { font-size:14px; } nav { margin-bottom:28px; } }
+@media(max-width:767px) { main { padding:28px 24px 50px; } nav { margin-bottom:28px; } }
+@media(max-width:370px) { main { padding-left:18px; padding-right:18px; } }
 </style>
 <script src="../app.js" defer></script>
 </head><body><main>

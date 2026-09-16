@@ -9,11 +9,11 @@ I work across AI products, design systems, and code. I enjoy turning an ambiguou
 
 ### Super Agent
 Four AI agents, one conversation. Helping people get things done without choosing which assistant to ask.
-Case study: https://uxmaitreyii.framer.website/super-agent
+[Read case study](https://uxmaitreyii.framer.website/super-agent)
 
 ### Connect
 One onboarding system for 50+ connectors, turning 22 different workflows into six familiar patterns.
-Case study: https://uxmaitreyii.framer.website/connect
+[Read case study](https://uxmaitreyii.framer.website/connect)
 
 ## Latest experiments
 Experiment 01 Coming soon: A little room for what’s next.
@@ -21,7 +21,7 @@ Experiment 02 Coming soon: A little room for what’s next.
 Experiment 03 Coming soon: A little room for what’s next.
 
 ## Contact
-maitreyi0002@gmail.com: mailto:maitreyi0002@gmail.com
-linkedin/in/maitreyii: https://www.linkedin.com/in/maitreyii/
-x/maitreyi0002: https://x.com/maitreyi0002
-github/maitreyi0002-beep: https://github.com/maitreyi0002-beep
+- [maitreyi0002@gmail.com](mailto:maitreyi0002@gmail.com)
+- [linkedin/in/maitreyii](https://www.linkedin.com/in/maitreyii/)
+- [x/maitreyi0002](https://x.com/maitreyi0002)
+- [github/maitreyi0002-beep](https://github.com/maitreyi0002-beep)

@@ -53,6 +53,10 @@ Positive feedback became a set of guardrails for future changes. New requests we
 
 The automation outputs appeared in Slack as a weekly design-feedback density map. A short overview showed where feedback was concentrated, with a thread for the evidence behind the numbers.
 
+![Weekly Slack feedback summary](https://maitreyi0002-beep.github.io/maitreyi-portfolio/assets/loop-weekly-feedback.png)
+
+Counts describe extracted feedback that week, not problem severity or prevalence.
+
 PMs and product owners used these outputs as a weekly reference for sprint planning. Putting the overview and its supporting evidence together made the research available during prioritization, rather than leaving it in a separate document.
 
 I worked with our VP of Engineering to design the broader roadmap. The CEO also responded positively to the outputs. The clearest outcome was their use in the team's planning process; product impact still needs to be measured after changes ship.
@@ -81,6 +85,6 @@ Research automation is useful when it makes the reasoning easier to question. Th
 
 Next, I would validate the highest-priority hypotheses with recordings and targeted research, then compare outcomes after changes ship.
 
-Based on the Design Observability skill and its August 2026 roadmap artifact. Customer identities, private source links and internal operational details are omitted from this public account.
+Based on the Design Observability skill and its August 2026 roadmap artifact. The Slack summary is shared with permission. Customer conversations and private source links are omitted from this public account.
 
 Back to the portfolio

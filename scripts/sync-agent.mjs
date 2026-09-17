@@ -17,7 +17,7 @@ const summary = `# Maitreyi | Product designer\n\n## ${heading}\n${[...intro.mat
 const escape = s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 // Display literal Markdown, with clickable URLs but no rendered portfolio components.
 const linkedSummary = escape(summary).replace(/\]\((https?:[^)]+|mailto:[^)]+)\)/g,
-  (_, url) => `](<a href="${url}">${url}</a>)`);
+  (_, url) => `](<a href="${url}"${url === "https://components.codes/" ? ' target="_blank" rel="noopener noreferrer" aria-label="components.codes (opens in a new tab)"' : ""}>${url}</a>)`);
 const page = `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />

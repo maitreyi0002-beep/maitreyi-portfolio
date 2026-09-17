@@ -85,3 +85,5 @@ User explicitly approved publishing the second summary-table screenshot to the p
 
 ## 2026-09-17 return navigation
 User approved direct return links: WarmCall to #work; Morphing Flow and Loop to #experiments; components.codes gets quiet creator link and opens in a new tab from portfolio. WarmCall root/mobile are bundled templates; modify template JSON, not generated runtime. External repositories edited separately. Framer case studies have no editable source in these repositories and remain outstanding.
+
+Navigation publication: portfolio da3e861; Morphing Flow 67331d0 (build/typecheck passed and return link clicked successfully); WarmCall d8c1e5f pushed to main AND gh-pages (Pages serves gh-pages). Bundled template JSON must escape HTML < as \u003c to preserve closing-script safety. components.codes 5fe7efc mirrored to GitHub and Sites, version 8 deployed successfully; its footer links to portfolio experiments. Portfolio check/build passed. Framer Super Agent/Connect require editor access and remain unchanged.

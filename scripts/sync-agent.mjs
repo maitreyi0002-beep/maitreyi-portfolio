@@ -6,13 +6,14 @@ const intro = capture(/<div class="intro-copy">([\s\S]*?)<\/div>/);
 const heading = text(capture(/<h1 id="hero-title">([\s\S]*?)<\/h1>/)).replace(/click\s+\.\.\./,'click...');
 const projects = [...source.matchAll(/<article class="project"[\s\S]*?<h3>([\s\S]*?)<\/h3>[\s\S]*?<p id="[^"]+">([\s\S]*?)<\/p>[\s\S]*?<\/article>/g)];
 const projectLinks = [...capture(/<div class="project-list">([\s\S]*?)<\/section>/).matchAll(/href="(https:[^"]+)"/g)];
-if (projects.length !== 2 || projectLinks.length !== 2) throw new Error('Agent sync: expected two projects');
+if (!projects.length || projectLinks.length !== projects.length) throw new Error('Agent sync: project count/link mismatch');
+const projectLabels = [...source.matchAll(/<a\s+class="project-link"([^>]+)>/g)].map(m=>m[1].match(/data-link-label="([^"]+)"/)?.[1] || 'Read case study');
 const contacts = capture(/<div class="contact-links">([\s\S]*?)<\/div>/);
 const contactLinks = [...contacts.matchAll(/<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g)];
 if (contactLinks.length !== 4) throw new Error('Agent sync: expected four contacts');
 const experiments = [...source.matchAll(/<div class="experiment">[\s\S]*?<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)];
 if (experiments.length !== 3) throw new Error('Agent sync: expected three experiments');
-const summary = `# Maitreyi | Product designer\n\n## ${heading}\n${[...intro.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m=>text(m[1])).join('\n\n')}\n\n## Selected work\n${projects.map((p,i)=>`\n### ${text(p[1]).replace('↗','').trim()}\n${text(p[2])}\n[Read case study](${projectLinks[i][1]})\n`).join('')}\n## Latest experiments\n${experiments.map(m=>`${text(m[1])}: ${text(m[2])}`).join('\n')}\n\n## Contact\n${contactLinks.map(m=>`- [${text(m[2])}](${m[1]})`).join('\n')}\n`;
+const summary = `# Maitreyi | Product designer\n\n## ${heading}\n${[...intro.matchAll(/<p>([\s\S]*?)<\/p>/g)].map(m=>text(m[1])).join('\n\n')}\n\n## Selected work\n${projects.map((p,i)=>`\n### ${text(p[1]).replace('↗','').trim()}\n${text(p[2])}\n[${projectLabels[i]}](${projectLinks[i][1]})\n`).join('')}\n## Latest experiments\n${experiments.map(m=>`[${text(m[1])}](${new URL(m[1].match(/href="([^"]+)"/)[1], 'https://maitreyi0002-beep.github.io/maitreyi-portfolio/').href}): ${text(m[2])}`).join('\n')}\n\n## Contact\n${contactLinks.map(m=>`- [${text(m[2])}](${m[1]})`).join('\n')}\n`;
 const escape = s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 // Display literal Markdown, with clickable URLs but no rendered portfolio components.
 const linkedSummary = escape(summary).replace(/\]\((https?:[^)]+|mailto:[^)]+)\)/g,

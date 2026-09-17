@@ -44,7 +44,7 @@ assert.ok(
 assert.equal(
   (homepage.match(/class="experiment"/g) || []).length,
   3,
-  "Keep exactly three experiment placeholders",
+  "Keep exactly three experiments",
 );
 assert.match(homepage, /mailto:maitreyi0002@gmail.com/);
 console.log(
@@ -72,8 +72,8 @@ assert.ok(
 assert.ok(!homepage.includes("logo-eyes"), "The face logo is retired");
 assert.equal(
   (homepage.match(/data-project="/g) || []).length,
-  2,
-  "Keep two project rows",
+  3,
+  "Keep three project rows",
 );
 console.log(
   "Revised logo, project cards, and content exclusions verified.",

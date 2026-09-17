@@ -4,7 +4,7 @@ Loop / Research automation / Agent skill
 
 I built Design Observability to bring customer feedback and product behavior into the same conversation. Instead of starting research from scratch for each question, a designer could ask about a flow and trace the evidence back to its source.
 
-The work informed an evidence-led roadmap across 23 product flows and 140 screens.
+PMs and product owners referred to the outputs weekly to plan sprints. I also co-designed an evidence-led roadmap across 23 product flows and 140 screens with our VP of Engineering.
 
 ## The question behind the skill
 
@@ -48,6 +48,16 @@ The roadmap identified discoverability as a cross-product theme. Repeated diffic
 
 ### Protect what already works
 Positive feedback became a set of guardrails for future changes. New requests were considered alongside those constraints, rather than automatically moving to the top.
+
+## Research where planning already happened
+
+The automation outputs appeared in Slack as a weekly design-feedback density map. A short overview showed where feedback was concentrated, with a thread for the evidence behind the numbers.
+
+PMs and product owners used these outputs as a weekly reference for sprint planning. Putting the overview and its supporting evidence together made the research available during prioritization, rather than leaving it in a separate document.
+
+I worked with our VP of Engineering to design the broader roadmap. The CEO also responded positively to the outputs. The clearest outcome was their use in the team's planning process; product impact still needs to be measured after changes ship.
+
+The weekly Slack outputs, the designer-invoked research skill and the one-off roadmap sweep were related parts of the workflow. The supplied skill document describes the scoped research behavior; it does not itself define the weekly delivery schedule.
 
 ## Designer review changed the system
 

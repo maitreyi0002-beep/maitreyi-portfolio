@@ -9,7 +9,7 @@ I work across AI products, design systems, and code. I enjoy turning an ambiguou
 
 ### Super Agent
 Four AI agents, one conversation. Helping people get things done without choosing which assistant to ask.
-[Read case study](https://uxmaitreyii.framer.website/super-agent)
+[Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/super-agent/)
 
 ### Connect
 One onboarding system for 50+ connectors, turning 22 different workflows into six familiar patterns.

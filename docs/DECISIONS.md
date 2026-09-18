@@ -81,3 +81,8 @@ User explicitly approved publishing the second summary-table screenshot to the p
 
 ## 2026-09-17 return navigation
 User approved direct return links: WarmCall to #work; Morphing Flow and Loop to #experiments; components.codes gets quiet creator link and opens in a new tab from portfolio. WarmCall root/mobile are bundled templates; modify template JSON, not generated runtime. External repositories edited separately. Framer case studies have no editable source in these repositories and remain outstanding.
+## 2026-09-18: Super Agent case study migration (user)
+Build the supplied Super Agent case study as a first-party portfolio route. Human readers begin at About the project after the title and hero; the supplied agent facts remain available in a separate literal-Markdown agent route and raw Markdown file. Keep the portfolio’s typography, themes, responsive margins, contact footer, and a back-to-top control. Replace the landing-page Super Agent Framer link with the new local case study.
+
+## 2026-09-18: case-study implementation (implementation)
+The case study lives at `site/work/super-agent/`, with supplied image assets renamed under `site/assets/super-agent/`. The old-product section uses a dependency-free horizontal scroll-snap carousel with previous/next controls and left/right keyboard support. This preserves the supplied carousel intent without adding React or Embla to the otherwise static site. The desktop contents list is fixed at the left reading margin and becomes an expandable in-flow list on narrower viewports. A deliberately plain agent route loads the user-supplied Markdown, including its agent-only quick facts.

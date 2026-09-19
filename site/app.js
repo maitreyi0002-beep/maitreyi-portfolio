@@ -94,16 +94,26 @@ setTheme(
 );
 // The incoming theme is revealed by a circle growing from the switch to the far corner.
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-themeButton?.addEventListener("click", () => {
+themeButton?.addEventListener("click", (event) => {
   const theme = root.dataset.theme === "dark" ? "light" : "dark";
   const commit = () => {
     setTheme(theme);
     setPreference("maitreyi-theme", theme);
   };
   if (!document.startViewTransition || reducedMotion.matches) return commit();
-  const box = themeButton.getBoundingClientRect();
-  const x = box.left + box.width / 2;
-  const y = box.top + box.height / 2;
+  // A real pointer click anchors on the exact point clicked, matching the
+  // toggle's visible position precisely. Keyboard/programmatic activation has
+  // no meaningful pointer position (browsers report 0,0), so fall back to the
+  // toggle's own center in that case.
+  let x, y;
+  if (event.detail === 0) {
+    const box = themeButton.getBoundingClientRect();
+    x = box.left + box.width / 2;
+    y = box.top + box.height / 2;
+  } else {
+    x = event.clientX;
+    y = event.clientY;
+  }
   const radius = Math.hypot(
     Math.max(x, innerWidth - x),
     Math.max(y, innerHeight - y),
@@ -179,6 +189,58 @@ document.addEventListener("keydown", primeAudios, { once: true });
 const playHoverSound = makeHoverSound("bubble.mp3");
 // Entering a footer contact link, by pointer or keyboard focus, plays another.
 const playLinkHoverSound = makeHoverSound("hover.mp3");
+
+// Entering the footer water plays a single drop sound at full volume
+// immediately (a fade-in would blunt its transient onset) — once per entry,
+// not repeated for as long as the visitor keeps interacting with the water.
+// Leaving before it finishes fades it out rather than cutting it off.
+const waterSurface = document.querySelector(".water-surface");
+if (waterSurface) {
+  const WATER_FADE_OUT_MS = 400;
+  const waterSound = new Audio(
+    new URL("assets/audio/drop.mp3", document.currentScript?.src || location.href).href,
+  );
+  waterSound.preload = "auto";
+  waterSound.addEventListener("error", () =>
+    console.warn("Water sound failed to load or decode:", waterSound.src, waterSound.error),
+  );
+  audiosToPrime.push(waterSound);
+  let waterFadeFrame = 0;
+  const enterWater = () => {
+    cancelAnimationFrame(waterFadeFrame);
+    waterSound.volume = 1;
+    if (!waterSound.paused) return; // Already playing (e.g. re-entering mid fade-out).
+    waterSound.currentTime = 0;
+    waterSound.play().catch(() => {
+      /* Browsers refuse audio until the visitor has interacted; fail silently. */
+    });
+  };
+  const leaveWater = () => {
+    if (waterSound.paused) return;
+    cancelAnimationFrame(waterFadeFrame);
+    const start = performance.now();
+    const from = waterSound.volume;
+    const step = (now) => {
+      const progress = Math.min((now - start) / WATER_FADE_OUT_MS, 1);
+      waterSound.volume = from * (1 - progress);
+      if (progress < 1) {
+        waterFadeFrame = requestAnimationFrame(step);
+      } else {
+        waterSound.pause();
+        waterSound.currentTime = 0;
+      }
+    };
+    waterFadeFrame = requestAnimationFrame(step);
+  };
+  waterSurface.addEventListener("pointerenter", (event) => {
+    if (event.pointerType !== "touch") enterWater();
+  });
+  waterSurface.addEventListener("pointerleave", (event) => {
+    if (event.pointerType !== "touch") leaveWater();
+  });
+  waterSurface.addEventListener("focus", enterWater);
+  waterSurface.addEventListener("blur", leaveWater);
+}
 
 // Wide, fine-pointer screens use peripheral previews; touch keeps direct case-study links.
 const widePreview = matchMedia("(min-width:1101px) and (hover:hover)");

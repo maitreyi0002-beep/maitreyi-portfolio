@@ -51,3 +51,7 @@ User clarified agent view must look like an .md document, not a styled clone of 
 
 ## 2026-09-17: real experiments and Loop case study
 User supplied all three experiments, superseding the placeholder requirement: components.codes first, Morphing Flow second (the agent skill underpinning the library, per user), Design Observability third. Sources: the two live experiment sites and user-supplied Design Observability skill / August roadmap documents. Public Loop case study separates the scoped reusable skill from the one-off 23-flow, 140-screen roadmap sweep; describes human review, evidence types and limitations without customer identities, internal metrics or private links. Original attachments remain outside the repository. Existing compact landing layout retained. WarmCall added as selected work. Agent summaries include experiment destinations.
+
+
+## 2026-09-19: Super Agent source of truth
+The user has explicitly commissioned the Super Agent case study, superseding the original landing-only scope for this page. Edit `site/work/super-agent/super-agent-case-study.md` for copy and `scripts/sync-super-agent.mjs` for markup. Human and agent HTML are generated. Keep full supplied wording, homepage reading width, right desktop contents and centered top nav. Image layout follows the original Framer reference; do not widen the reading column or summarize the prose again.

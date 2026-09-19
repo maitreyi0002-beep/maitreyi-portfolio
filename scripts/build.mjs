@@ -1,4 +1,5 @@
 import './sync-agent.mjs';
+import './sync-super-agent.mjs';
 import { cp, mkdir, rm } from "node:fs/promises";
 await rm(new URL("../dist/", import.meta.url), {
   recursive: true,

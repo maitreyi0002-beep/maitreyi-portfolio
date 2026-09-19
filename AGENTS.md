@@ -62,4 +62,7 @@ Keep the case-study header sticky with an opaque background and border. The desk
 
 
 ## 2026-09-19: Super Agent follow-up
-The human Storybook link sits below the six design-system images. The desktop contents list is sticky only within sections 1–6 and stops before takeaways and the footer. Four before/after pairs stay side by side on mobile. “Designing for momentum” is the current section heading and contents label; it is an implementation choice awaiting user feedback.
+The human Storybook link sits below the six design-system images. The desktop contents list is sticky only within sections 1–6 and stops before takeaways and the footer. “Designing for momentum” is the current section heading and contents label; it is an implementation choice awaiting user feedback.
+
+## 2026-09-19: before/after pairs stack on mobile (supersedes the side-by-side rule above)
+User reversed the earlier decision. The four before/after pairs in “Designing for momentum” now stack vertically on mobile, before above after, so each screen is readable at full column width. Desktop keeps the two-column pair layout.

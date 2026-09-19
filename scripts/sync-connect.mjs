@@ -73,6 +73,7 @@ if(sections.length!==8)throw new Error(`Expected eight Connect sections, found $
 const ids=['context','research','personas','step-zero','challenge','patterns','solutions','takeaways'];
 const shortTitles=['Context & my role','Research: the numbers','Voices of users','The Step 0 solution','How might we…','Six connector patterns','Small solutions','Reflections & takeaways'];
 const toc = ids.map((id,i)=>`<li><a href="#${id}">${shortTitles[i]}</a></li>`).join('');
+const themeSwitch = home.match(/<button[^>]*id="theme-toggle"[\s\S]*?<\/button>/)[0];
 const logo = home.match(/<button\s+class="logo-mark"[\s\S]*?<\/button>/)[0];
 const footer = home.match(/<footer id="connect"[\s\S]*?<\/footer>/)[0].replace('href="#home"','href="#top"');
 const initTheme=`<script>try{document.documentElement.dataset.theme=localStorage.getItem('maitreyi-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{}</script>`;
@@ -82,7 +83,7 @@ const page=`<!doctype html>
 <link rel="icon" href="../../assets/logo.svg" /><link rel="alternate" type="text/markdown" href="connect-case-study.md" title="Connect for agents" />
 ${initTheme}<link rel="stylesheet" href="../../styles.css" /><link rel="stylesheet" href="../super-agent/case-study.css" /><link rel="stylesheet" href="connect.css" /><script src="../../app.js" defer></script><script src="../../landscape.js" defer></script><script src="../super-agent/case-study.js" defer></script></head>
 <body class="study-page connect-page" id="top"><a class="skip-link" href="#main">Skip to case study</a>
-<header class="study-header"><div class="page-shell"><div class="study-header-inner">${logo}<nav aria-label="Case study navigation"><a href="../../index.html">Back to home</a><a href="#connect">Contact</a><a href="agents/">For agents</a><button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="theme-track" aria-hidden="true"><span></span></span><span class="sr-only">Dark theme</span></button></nav></div></div></header>
+<header class="study-header"><div class="page-shell"><div class="study-header-inner">${logo}<nav aria-label="Case study navigation"><a href="../../index.html">Back to home</a><a href="#connect">Contact</a><a href="agents/">For agents</a>${themeSwitch}</nav></div></div></header>
 <main id="main" class="page-shell"><div class="study-reading"><header class="study-intro"><h1>Connect: Turning a Hand-Held Sales Process into a Self-Serve Product</h1><figure>${img('hero','Loop Connect: Connect any data source, displayed on a desktop monitor',true)}</figure></header>
 <aside class="study-toc"><details open><summary>On this page</summary><nav aria-label="Contents"><ol>${toc}</ol></nav></details></aside>
 <article class="study-article">${sections.slice(0,7).map((s,i)=>`<section id="${ids[i]}" aria-labelledby="${ids[i]}-title"><h2 id="${ids[i]}-title">${inline(s[1])}</h2>${render(s[2])}</section>`).join('\n')}</article></div>

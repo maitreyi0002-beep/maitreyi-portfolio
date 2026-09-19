@@ -20,6 +20,7 @@ Read `PROJECT_MEMORY.md`, `docs/DECISIONS.md`, and `docs/STATUS.md` before makin
 - Update `site/llms.txt` and the readable `site/agents/index.html` whenever portfolio facts change.
 - All shipped project imagery is real user work sourced from her existing portfolio. Do not invent screens, roles, dates, employers, metrics, or outcomes.
 - Keep source and handoff documents in the same Git repository. Update the decision log and status after every meaningful iteration. Clearly distinguish user decisions, implementation choices, and unconfirmed proposals.
+- The Git repository, not the chat session, is the handoff between agents (Claude, Codex, Cursor). `git pull` before editing and push promptly once a change is verified. Do not leave work uncommitted across sessions: if the user may continue in a different tool or a different local checkout, an unpushed change is invisible to it and can silently diverge into a conflicting one.
 - Run `npm run check` and `npm run build` after changes. Check desktop/mobile, both themes, keyboard focus, sound opt-in, reduced motion, and agent mode when changing interactions.
 - Never commit credentials, `.env`, work files, downloaded reference HTML, or local tool caches.
 - Do not silently declare user satisfaction. A functioning first version still needs the user's design feedback.
@@ -70,3 +71,7 @@ User reversed the earlier decision. The four before/after pairs in “Designing 
 
 ## 2026-09-19: Connect source of truth
 The user commissioned Connect as a local case study. Edit `site/work/connect/connect-case-study.md` for copy and `scripts/sync-connect.mjs` for markup; human/agent HTML are generated. Reuse Super Agent styles and interactions, with Connect-specific image/table rules in `site/work/connect/connect.css`. Keep eight human sections, literal full Markdown for agents, native Framer imagery with rounded containers, and vertically stacked mobile image pairs. The contents list stops before reflections/footer. `npm run build` regenerates both case studies; `npm run check` detects stale output.
+
+## 2026-09-19: theme switch redesign and circular reveal (user)
+User replaced the old two-tone track with a supplied reference design: a pill holding a sun and a moon, with a circular knob sliding under the active icon. Switching themes reveals the incoming theme as a circle growing from the switch to the far screen corner, via the native View Transitions API. The visible "Dark" text label is gone; the control carries screen-reader-only text instead, matching the case-study header. Keep the no-JavaScript and reduced-motion fallbacks intact.
+

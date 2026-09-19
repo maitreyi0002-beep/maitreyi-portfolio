@@ -131,3 +131,11 @@ User commissioned a local Connect page using the approved Super Agent format, ro
 Implementation: `scripts/sync-connect.mjs` generates the human/agent pages from `site/work/connect/connect-case-study.md`. It reuses Super Agent CSS and interaction JavaScript, with local image/table styles in `site/work/connect/connect.css`. The reading column is 520px, and the sticky contents wrapper ends before reflections. All eight human sections are retained. Twenty native-resolution Framer assets are stored locally, with source URLs in `docs/SOURCES.md`; screenshots enlarge on click/keyboard. Five sequential new-flow screens form a two-column desktop gallery and single-column mobile stack; before/after pairs also stack vertically on mobile. Metrics and quotes are supplied author claims, not independently verified outcomes.
 
 The homepage now links to `work/connect/`. Its old 22-workflow summary conflicted with the supplied 70+ flow count, so the summary now says “complex workflows” without a number; the case study retains the supplied wording. Global agent files are regenerated from that homepage. No new dependencies.
+
+## 2026-09-19: theme switch redesign and circular reveal
+User supplied a reference image for the theme toggle and commissioned the change directly. The switch is a 50x26 pill with a sun on the left and a moon on the right, both always visible, and a 20px knob that slides 22px between them. Active icon takes near-black on light and near-white on dark; the inactive icon stays mid grey. Track and knob use their own tokens so the control keeps its own contrast rather than inheriting page surfaces.
+
+Theme changes now run through `document.startViewTransition`, with a `clip-path` circle animated from the switch centre to the farthest viewport corner over 520ms. Default view-transition cross-fades are disabled so the change reads as a clean wipe. Browsers without the API and users preferring reduced motion get an instant switch.
+
+User approved the design and the spacing after review. The removed visible "Dark" label is an implementation choice they accepted in the same review.
+

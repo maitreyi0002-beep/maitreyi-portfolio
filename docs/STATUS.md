@@ -129,3 +129,9 @@ Implementation: `scripts/sync-connect.mjs` generates the human/agent pages from 
 The homepage now links to `work/connect/`. Its old 22-workflow summary conflicted with the supplied 70+ flow count, so the summary now says “complex workflows” without a number; the case study retains the supplied wording. Global agent files are regenerated from that homepage. No new dependencies.
 
 Validation: `npm run check`, `npm run build`, and `git diff --check` passed. Browser inspected desktop dark/light and mobile 390px/320px layouts; no horizontal overflow. Verified eight human sections, nested list semantics, rounded before/after images stacked vertically on mobile, image dialog opening and Escape dismissal, and literal full agent Markdown. The desktop contents bottom stays above the reflections heading; no contents can extend into the footer. Browser console reported no errors. Shared reduced-motion and disabled-audio behavior remain unchanged. User visual satisfaction awaits feedback.
+
+## 2026-09-19: theme switch redesign and circular reveal
+The theme toggle is now a sun/moon pill with a sliding knob, and switching themes plays a circular reveal growing from the switch. Applies to the homepage and the Super Agent case-study header; agent routes keep their plain text button.
+
+Validation: `npm run check` and `npm run build` passed and `node --check` passed on `site/app.js`. Box-model math was recomputed against the global `border-box` reset after an initial padding error would have overflowed the icons. User reviewed the switch and the icon spacing in the browser and approved both. No agent-side browser verification was performed this session because no browser tool was available; reduced-motion and no-JavaScript fallbacks were reviewed in source only and remain visually unconfirmed.
+

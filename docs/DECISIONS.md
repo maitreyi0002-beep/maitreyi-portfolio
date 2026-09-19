@@ -120,3 +120,11 @@ User commissioned a local Connect page using the approved Super Agent format, ro
 Implementation: `scripts/sync-connect.mjs` generates the human/agent pages from `site/work/connect/connect-case-study.md`. It reuses Super Agent CSS and interaction JavaScript, with local image/table styles in `site/work/connect/connect.css`. The reading column is 520px, and the sticky contents wrapper ends before reflections. All eight human sections are retained. Twenty native-resolution Framer assets are stored locally, with source URLs in `docs/SOURCES.md`; screenshots enlarge on click/keyboard. Five sequential new-flow screens form a two-column desktop gallery and single-column mobile stack; before/after pairs also stack vertically on mobile. Metrics and quotes are supplied author claims, not independently verified outcomes.
 
 The homepage now links to `work/connect/`. Its old 22-workflow summary conflicted with the supplied 70+ flow count, so the summary now says “complex workflows” without a number; the case study retains the supplied wording. Global agent files are regenerated from that homepage. No new dependencies.
+
+## 2026-09-19: theme switch redesign and circular reveal (user)
+User supplied a reference image and asked for the toggle to match it, and for the theme change to start at the toggle as a circle expanding to full screen.
+
+Implementation: markup lives in `site/index.html` and the case-study header template in `scripts/sync-super-agent.mjs`, so both routes share one control; the agent routes keep their deliberately plain text button. The pill is 50x26 with 1px border and 2px padding; each half is 22px, holding a 14px icon with 4px side margins, and the 20px knob is inset 3px and translates 22px so it stays centred under either icon. Track and knob colours are scoped custom properties with a `prefers-color-scheme` fallback for the no-JavaScript case.
+
+The reveal uses the native View Transitions API: `::view-transition-old/new(root)` have their default animations removed, and the new snapshot is clipped by a circle animated from the switch centre to the farthest corner. No library was added, preserving the dependency-free architecture. `prefers-reduced-motion: reduce` and browsers lacking `startViewTransition` fall back to an instant switch.
+

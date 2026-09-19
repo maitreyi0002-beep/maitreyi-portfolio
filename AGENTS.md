@@ -20,6 +20,7 @@ Read `PROJECT_MEMORY.md`, `docs/DECISIONS.md`, and `docs/STATUS.md` before makin
 - Update `site/llms.txt` and the readable `site/agents/index.html` whenever portfolio facts change.
 - All shipped project imagery is real user work sourced from her existing portfolio. Do not invent screens, roles, dates, employers, metrics, or outcomes.
 - Keep source and handoff documents in the same Git repository. Update the decision log and status after every meaningful iteration. Clearly distinguish user decisions, implementation choices, and unconfirmed proposals.
+- The Git repository, not the chat session, is the handoff between agents (Claude, Codex, Cursor). `git pull` before editing and push promptly once a change is verified. Do not leave work uncommitted across sessions: if the user may continue in a different tool or a different local checkout, an unpushed change is invisible to it and can silently diverge into a conflicting one.
 - Run `npm run check` and `npm run build` after changes. Check desktop/mobile, both themes, keyboard focus, sound opt-in, reduced motion, and agent mode when changing interactions.
 - Never commit credentials, `.env`, work files, downloaded reference HTML, or local tool caches.
 - Do not silently declare user satisfaction. A functioning first version still needs the user's design feedback.

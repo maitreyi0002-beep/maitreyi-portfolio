@@ -3,10 +3,11 @@ const root = document.documentElement;
 const themeButton = document.querySelector("#theme-toggle");
 const announcement = document.querySelector("#announcement");
 
-// Every click across the site plays a short recorded click. This script loads at
-// varying folder depths (homepage, case study, both agent routes), so the asset
-// path is resolved against this script's own URL rather than the page's, which
-// would otherwise break on every page except the homepage.
+// Clicking a link, button, or the contents toggle plays a short recorded click —
+// meaningful interactions only, not every incidental click on the page. This
+// script loads at varying folder depths (homepage, case study, both agent
+// routes), so the asset path is resolved against this script's own URL rather
+// than the page's, which would otherwise break on every page except the homepage.
 const clickSound = new Audio(
   new URL("assets/audio/click.mp3", document.currentScript?.src || location.href).href,
 );
@@ -14,12 +15,47 @@ clickSound.preload = "auto";
 clickSound.addEventListener("error", () =>
   console.warn("Click sound failed to load or decode:", clickSound.src, clickSound.error),
 );
-document.addEventListener("click", () => {
+const playClickSound = () => {
   clickSound.currentTime = 0;
   clickSound.play().catch(() => {
     /* Browsers refuse audio before any interaction; the very click that would
        start it is itself the required gesture, so this only fails in edge cases. */
   });
+};
+// A link that navigates away in the same tab unloads the page (and its audio)
+// almost immediately, before a sub-second clip is ever audible. Only an in-page
+// anchor, a new-tab link, or an unmodified click that a browser would otherwise
+// handle specially (new tab/window) is exempt from the short delay below.
+const NAVIGATION_SOUND_DELAY_MS = 150;
+const navigatesAway = (link) => {
+  if (!link.href || (link.target && link.target !== "_self")) return false;
+  let url;
+  try {
+    url = new URL(link.href, location.href);
+  } catch {
+    return false;
+  }
+  return url.origin !== location.origin || url.pathname !== location.pathname;
+};
+document.addEventListener("click", (event) => {
+  const target = event.target.closest("a, button, summary");
+  if (!target) return;
+  const link = target.tagName === "A" ? target : null;
+  const isPlainClick =
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey;
+  if (link && isPlainClick && navigatesAway(link)) {
+    event.preventDefault();
+    playClickSound();
+    setTimeout(() => {
+      location.href = link.href;
+    }, NAVIGATION_SOUND_DELAY_MS);
+    return;
+  }
+  playClickSound();
 });
 const getPreference = (key) => {
   try {
@@ -98,63 +134,33 @@ systemTheme.addEventListener("change", (event) => {
     setTheme(event.matches ? "dark" : "light");
 });
 
-// Hovering the cherry blossom header plays a supplied recording. Leaving partway
-// through does not cut it off, but it does not run to the clip's full five seconds
-// either: it keeps going for up to two more seconds, then fades out over 250ms
-// so the cutoff never pops. Escape stops it immediately, keeping a keyboard-reachable
-// way to silence sound that plays longer than a few seconds.
-const canopy = document.querySelector(".blossom-canopy[data-audio]");
-if (canopy) {
-  const LEAVE_GRACE_MS = 2000;
-  const FADE_MS = 250;
-  let ambient;
-  let leaveTimer = 0;
-  let fadeFrame = 0;
-  const cancelLeaveFade = () => {
-    clearTimeout(leaveTimer);
-    cancelAnimationFrame(fadeFrame);
+// A new mark replaces the face. Replay switches between identical draw animations.
+const logo = document.querySelector("#logo-mark");
+logo?.addEventListener("click", () => logo.classList.toggle("replay"));
+
+// Hover-triggered sounds need priming: hover is not a user gesture, so browsers
+// block their first play() until the page has seen a real click or keypress.
+// This wraps an Audio element with a play() that resets to the start each time,
+// and registers it to be silently primed on that first real interaction.
+const audiosToPrime = [];
+const makeHoverSound = (file) => {
+  const audio = new Audio(
+    new URL(`assets/audio/${file}`, document.currentScript?.src || location.href).href,
+  );
+  audio.preload = "auto";
+  audio.addEventListener("error", () =>
+    console.warn(`${file} failed to load or decode:`, audio.src, audio.error),
+  );
+  audiosToPrime.push(audio);
+  return () => {
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+      /* Browsers refuse audio until the visitor has interacted; fail silently. */
+    });
   };
-  const getAmbient = () => {
-    if (!ambient) {
-      ambient = new Audio(canopy.dataset.audio);
-      ambient.preload = "auto";
-      ambient.addEventListener("ended", () => {
-        cancelLeaveFade();
-        ambient.currentTime = 0;
-        ambient.volume = 1;
-      });
-      // Surfaced only in the console: playback failure must never break the page.
-      ambient.addEventListener("error", () =>
-        console.warn(
-          "Cherry blossom audio failed to load or decode:",
-          canopy.dataset.audio,
-          ambient.error,
-        ),
-      );
-    }
-    return ambient;
-  };
-  const fadeOutAndStop = () => {
-    const audio = ambient;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / FADE_MS, 1);
-      audio.volume = 1 - progress;
-      if (progress < 1) {
-        fadeFrame = requestAnimationFrame(step);
-      } else {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.volume = 1;
-      }
-    };
-    fadeFrame = requestAnimationFrame(step);
-  };
-  // Safari and Chrome both require a real user gesture before the first play().
-  // A hover is never a gesture, so the very first click/keypress on the page primes
-  // playback once here; every later hover then plays without re-asking permission.
-  const unlockAmbient = () => {
-    const audio = getAmbient();
+};
+const primeAudios = () => {
+  audiosToPrime.forEach((audio) => {
     audio
       .play()
       .then(() => {
@@ -164,38 +170,15 @@ if (canopy) {
       .catch(() => {
         /* Priming can fail silently; the next real hover will just try again. */
       });
-  };
-  document.addEventListener("pointerdown", unlockAmbient, { once: true });
-  document.addEventListener("keydown", unlockAmbient, { once: true });
-  canopy.addEventListener("pointerenter", (event) => {
-    if (event.pointerType === "touch") return;
-    const audio = getAmbient();
-    cancelLeaveFade();
-    audio.volume = 1;
-    if (!audio.paused) return; // Already mid-clip: let it continue rather than restart.
-    audio.currentTime = 0;
-    audio.play().catch(() => {
-      /* Browsers refuse audio until the visitor has interacted; fail silently. */
-    });
   });
-  canopy.addEventListener("pointerleave", (event) => {
-    if (event.pointerType === "touch" || !ambient || ambient.paused) return;
-    cancelLeaveFade();
-    leaveTimer = setTimeout(fadeOutAndStop, LEAVE_GRACE_MS - FADE_MS);
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && ambient && !ambient.paused) {
-      cancelLeaveFade();
-      ambient.pause();
-      ambient.currentTime = 0;
-      ambient.volume = 1;
-    }
-  });
-}
-
-// A new mark replaces the face. Replay switches between identical draw animations.
-const logo = document.querySelector("#logo-mark");
-logo?.addEventListener("click", () => logo.classList.toggle("replay"));
+};
+document.addEventListener("pointerdown", primeAudios, { once: true });
+document.addEventListener("keydown", primeAudios, { once: true });
+// Entering a Selected Work row, by pointer or keyboard focus, plays a short
+// recording.
+const playHoverSound = makeHoverSound("bubble.mp3");
+// Entering a footer contact link, by pointer or keyboard focus, plays another.
+const playLinkHoverSound = makeHoverSound("hover.mp3");
 
 // Wide, fine-pointer screens use peripheral previews; touch keeps direct case-study links.
 const widePreview = matchMedia("(min-width:1101px) and (hover:hover)");
@@ -212,6 +195,7 @@ projects.forEach((project) => {
     if (event.pointerType === "touch") return;
     hoveredProject = project;
     syncPreview();
+    playHoverSound();
   });
   project.addEventListener("pointerleave", () => {
     hoveredProject = null;
@@ -220,6 +204,7 @@ projects.forEach((project) => {
   project.addEventListener("focusin", () => {
     focusedProject = project;
     syncPreview();
+    playHoverSound();
   });
   project.addEventListener("focusout", (event) => {
     if (!project.contains(event.relatedTarget)) {
@@ -294,7 +279,11 @@ document.querySelectorAll(".click-word, .contact-links a").forEach((link) => {
   };
   link.addEventListener("click", animate);
   if (link.matches(".contact-links a")) {
-    link.addEventListener("pointerenter", animate);
+    link.addEventListener("pointerenter", (event) => {
+      animate();
+      if (event.pointerType !== "touch") playLinkHoverSound();
+    });
     link.addEventListener("focus", animate);
+    link.addEventListener("focus", playLinkHoverSound);
   }
 });

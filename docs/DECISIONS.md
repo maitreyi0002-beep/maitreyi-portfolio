@@ -138,3 +138,20 @@ Click sound is a flat `document.addEventListener("click", ...)` with no target f
 The old synthesized-tone system (`playTone`, `soundEnabled`, references to a `#sound-toggle` button absent from every page's markup) was deleted outright rather than given a new UI, since reviving it would have contradicted the existing opt-in-sound decision from 2026-09-14.
 
 Asset handling: no MP3 encoder exists on this machine (afconvert decodes MP3 but cannot encode it; no ffmpeg or lame installed), so the shipped clips are AAC (`.m4a`) despite the supplied sources being `.mp3`. Only the two files actually referenced in code are committed; unused supplied recordings stay local and untracked.
+
+
+## 2026-09-20: click sound scoped down, navigation-sound fix (user)
+User found the site-wide click sound "a little too much" after the prior session's broad wiring. Scoped to `event.target.closest("a, button, summary")` in `site/app.js` — links, buttons, and the mobile contents toggle only.
+
+Separately, the user asked why case studies and the Design Observability experiment played no click sound. Root cause: those links navigate away in the same tab, and the browser unloads the page (killing the in-progress `<audio>`) before a sub-second clip is audible. Only components.codes worked, because its `target="_blank"` link leaves the current tab alive. Fixed with a `navigatesAway()` check (different origin or pathname, not an explicit non-`_self` target) on an unmodified primary click: `preventDefault()`, play the sound, then `location.href = link.href` after a 150ms `setTimeout`. In-page anchors, new-tab links, and modified clicks (Cmd/Ctrl/Shift/middle-click, which open a new tab/window) skip this path entirely so native browser behavior for those is untouched.
+
+## 2026-09-20: cherry blossom hover sound removed (user)
+User found the ambient cherry blossom hover sound "too much" after several rounds of level and timing correction, and asked to remove it rather than tune further. Deleted the entire hover-audio block from `site/app.js`, the `data-audio` attribute from the canopy button in `site/index.html`, and `git rm`'d `site/assets/audio/cherry-blossom.m4a`.
+
+## 2026-09-20: hover sounds for Selected Work and footer contact links (user)
+User asked for hover sound on Selected Work rows (`bubble.mp3`, after an initial attempt with `water-drop-click.mp3` was "very loud" and swapped out) and on footer contact links (`hover.mp3`). Both are triggered on `pointerenter` (excluding touch) and `focus`, so keyboard users get the same feedback as mouse users.
+
+Implementation: extracted the "prime hover audio on the page's first real gesture" logic (previously specific to the removed cherry blossom sound) into `makeHoverSound(file)` in `site/app.js`, which builds an `Audio` element, registers it in a shared `audiosToPrime` list, and returns a bound play function. A single pair of document-level `pointerdown`/`keydown` listeners primes every registered hover sound at once, rather than adding a new pair of listeners per sound.
+
+## 2026-09-20: resume link added then removed (user)
+User asked to add a resume link (Google Drive) to the footer, reversing the 2026-09-15 decision to remove it. This required raising a hardcoded `contactLinks.length !== 4` assertion in `scripts/sync-agent.mjs` to 5 and regenerating the Super Agent and Connect case-study pages, which copy the homepage footer verbatim and had gone stale. The user reversed course again within the same session and asked to remove it; the assertion was reverted to 4 and every generated page regenerated again. No resume link ships as of this entry.

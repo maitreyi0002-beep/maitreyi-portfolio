@@ -147,3 +147,20 @@ Cherry blossom hover: the shipped clip is a 5-second, gained, faded excerpt from
 Click sound: every click anywhere on the site plays `click.mp3` directly, no restriction to interactive elements. Because `app.js` loads at different folder depths across the site (homepage, its agent view, the Super Agent case study, and its agent view), the audio path is resolved against `document.currentScript.src` rather than a hardcoded relative path, so it works correctly regardless of which page loaded the script.
 
 The previous synthesized click-tone system (Web Audio oscillator tones gated by a `#sound-toggle` button) was deleted rather than revived. That button had already been removed from every page's markup, leaving the gating flag permanently stuck off with no way to enable it — dead code, not a working opt-in.
+
+
+## 2026-09-20: click sound scoped to real interactions, navigation-delay fix
+The site-wide click sound from 2026-09-19 turned out to be too much ("a little too much" per user feedback) and was scoped down to `a, button, summary` only — meaningful interactions, not incidental clicks on empty page space.
+
+Separately, clicking into any case study (Super Agent, Connect, Design Observability) or a same-tab external link (WarmCall, Morphing Flow) produced no audible sound at all, because same-tab navigation unloads the page (and its audio) before a sub-second clip can play. Only components.codes (the one link with `target="_blank"`) worked, since its tab never unloads. Fixed by detecting real cross-page navigation (`navigatesAway()` in `site/app.js`: different origin or pathname, no explicit non-`_self` target) on an unmodified primary click, calling `preventDefault()`, playing the sound, then completing the navigation via `location.href` after a 150ms delay. In-page anchors, new-tab links, and modified clicks (which open a new tab/window natively) bypass this entirely and are unaffected.
+
+## 2026-09-20: cherry blossom hover sound removed
+User found the cherry blossom ambient hover sound "too much" after multiple rounds of level/timing iteration and asked to remove it outright rather than tune it further. Removed the `data-audio` attribute from the canopy button, the entire hover-audio block from `site/app.js`, and deleted `site/assets/audio/cherry-blossom.m4a` from the repository (was tracked; now `git rm`'d).
+
+## 2026-09-20: hover sounds for Selected Work and footer contact links
+Hovering (or keyboard-focusing) a Selected Work row plays `bubble.mp3`; hovering or focusing a footer contact link plays `hover.mp3`. Both needed the same "hover is not a user gesture" priming as the removed cherry blossom sound did, so that logic was extracted into a shared `makeHoverSound(file)` helper in `site/app.js` (returns a play function, registers the element to be silently primed on the page's first real click/keypress) instead of duplicating it a second time.
+
+The Selected Work hover sound was originally wired with `water-drop-click.mp3` (a renamed copy of the user-supplied "Water drop click.mp3"), but the user found it too loud and asked to swap to `bubble.mp3` instead, which is quieter at the source (peak ~63% vs ~98% of full scale) and needed no gain adjustment.
+
+## 2026-09-20: resume link added then removed
+User asked to add a resume link (Google Drive) to the footer contact links, reversing the 2026-09-15 decision to remove resume from the footer. This required bumping a hardcoded `contactLinks.length !== 4` assertion in `scripts/sync-agent.mjs` to 5, and regenerating the Super Agent and Connect case-study pages since they copy the homepage footer verbatim and went stale. In the same session the user then asked to remove the resume link again; the assertion was reverted to 4 and all generated pages regenerated again. Net effect: no resume link ships, but the four-contacts assertion and regeneration step are worth knowing about if this is requested again.

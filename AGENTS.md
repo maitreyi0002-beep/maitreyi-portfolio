@@ -77,3 +77,7 @@ User replaced the old two-tone track with a supplied reference design: a pill ho
 
 ## 2026-09-19: interaction audio (user)
 Two supplied recordings are wired in: hovering the cherry blossom header plays a five-second ambient clip (fades out after 2 seconds if the pointer leaves early, Escape stops it immediately), and every click anywhere on the site plays a short click sound. Both play through plain `Audio()` elements, no library. The dead click-tone system behind the old `#sound-toggle` (a button that no longer exists in any markup) was removed entirely rather than revived, per user request, since it contradicted the project's own opt-in-sound decision.
+
+
+## 2026-09-20: click sound scoped, cherry blossom sound removed, hover sounds added (user)
+The site-wide click sound only fires on links, buttons, and the mobile contents toggle now, not every click. Links that navigate away in the same tab get a short delay before navigating so the click is actually audible before the page unloads; in-page anchors, new-tab links, and modified clicks (Cmd/Ctrl/Shift-click, middle-click) are unaffected. The cherry blossom hover sound was removed entirely per user feedback ("feels too much") — no code, markup, or asset remains. Hovering (or keyboard-focusing) a Selected Work row now plays `bubble.mp3`; hovering or focusing a footer contact link plays `hover.mp3`. A resume link was added then removed again in the same session — do not re-add it without the user asking again.

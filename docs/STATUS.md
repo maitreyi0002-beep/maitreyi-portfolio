@@ -105,3 +105,11 @@ Validation: desktop and 390px screenshots inspected in both themes; 320px human/
 
 ## 2026-09-19: Super Agent navigation and component-set revision
 User requested a sticky top navigation with an opaque surface and thin border; plain “Back to home” text without an arrow; desktop contents on the left; a heading/subheading spanning the same reading width as the hero; and removal of the final human design-system section in favor of a prominent Storybook component-set button. The source Markdown and its literal agent view retain the full original section. The button uses the `design_system_url` supplied in that Markdown. The destination was opened and verified as a working Storybook with component documentation. Desktop and 390px/320px layouts were visually checked; 320px had no horizontal overflow.
+
+
+## 2026-09-19: Super Agent gallery, contents and mobile pairs (user)
+Move the Storybook component-set button directly below the six-image design-system gallery and reduce its padding. Keep the four before/after image pairs side by side on mobile. Bound the desktop contents list so it leaves with the story before “What I took away,” never appearing beside the footer. Rename the “Designing for human friction” section so it conveys the solutions too.
+
+Implementation: “Designing for momentum” is the chosen heading and contents label, pending Maitreyi’s wording feedback. The source Markdown and generated agent route use the same heading. A CSS sticky contents list now lives inside a grid wrapper that ends after the sixth section; “What I took away” sits outside that wrapper. The gallery renderer inserts the Storybook button immediately after the six component images, with 13px/16px padding; the outdated call-only note is omitted from the human rendering but retained in the complete Markdown source. The source’s final design-system section stays in agent Markdown, as previously requested.
+
+Validation: check/build passed. Desktop screenshots confirmed initial contents position and that its lower edge is above the viewport when the footer begins. At 390px, all four before/after pairs rendered as two equal columns without horizontal overflow; dark mobile text and image contrast were inspected. The human and agent pages remain generated from the Markdown. User satisfaction remains unconfirmed.

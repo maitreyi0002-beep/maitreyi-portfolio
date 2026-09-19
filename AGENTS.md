@@ -59,3 +59,7 @@ The user has explicitly commissioned the Super Agent case study, superseding the
 
 ## 2026-09-19: Super Agent layout refinement
 Keep the case-study header sticky with an opaque background and border. The desktop contents list belongs on the left; mobile contents remains collapsible. Human content ends at “What I took away” and then links to the supplied Storybook component set. Preserve the full raw Markdown, including the design-system section, in the agent route.
+
+
+## 2026-09-19: Super Agent follow-up
+The human Storybook link sits below the six design-system images. The desktop contents list is sticky only within sections 1–6 and stops before takeaways and the footer. Four before/after pairs stay side by side on mobile. “Designing for momentum” is the current section heading and contents label; it is an implementation choice awaiting user feedback.

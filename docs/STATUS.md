@@ -119,3 +119,13 @@ Validation: check/build passed. Desktop screenshots confirmed initial contents p
 Per user reversal, the four before/after pairs in "Designing for momentum" stack vertically below 768px instead of sitting side by side. Single-column `.study-pair` with an 18px gap; desktop unchanged.
 
 Validation: `npm run check` and `npm run build` passed, and the generated page still contains all four pairs in section 6. No visual browser verification was performed in this session because no browser tool was available; desktop and mobile rendering of this change remain visually unconfirmed.
+
+
+## 2026-09-19: Connect case study
+User commissioned a local Connect page using the approved Super Agent format, rounded screenshots, the same top navigation and footer, and a left contents list. Copy is preserved from the supplied `connect-case-study.md`; the agent-only quick facts and frontmatter appear only in the literal Markdown agent view. This supersedes the earlier landing-only scope for Connect.
+
+Implementation: `scripts/sync-connect.mjs` generates the human/agent pages from `site/work/connect/connect-case-study.md`. It reuses Super Agent CSS and interaction JavaScript, with local image/table styles in `site/work/connect/connect.css`. The reading column is 520px, and the sticky contents wrapper ends before reflections. All eight human sections are retained. Twenty native-resolution Framer assets are stored locally, with source URLs in `docs/SOURCES.md`; screenshots enlarge on click/keyboard. Five sequential new-flow screens form a two-column desktop gallery and single-column mobile stack; before/after pairs also stack vertically on mobile. Metrics and quotes are supplied author claims, not independently verified outcomes.
+
+The homepage now links to `work/connect/`. Its old 22-workflow summary conflicted with the supplied 70+ flow count, so the summary now says “complex workflows” without a number; the case study retains the supplied wording. Global agent files are regenerated from that homepage. No new dependencies.
+
+Validation: `npm run check`, `npm run build`, and `git diff --check` passed. Browser inspected desktop dark/light and mobile 390px/320px layouts; no horizontal overflow. Verified eight human sections, nested list semantics, rounded before/after images stacked vertically on mobile, image dialog opening and Escape dismissal, and literal full agent Markdown. The desktop contents bottom stays above the reflections heading; no contents can extend into the footer. Browser console reported no errors. Shared reduced-motion and disabled-audio behavior remain unchanged. User visual satisfaction awaits feedback.

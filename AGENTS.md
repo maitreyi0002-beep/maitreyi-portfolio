@@ -66,3 +66,7 @@ The human Storybook link sits below the six design-system images. The desktop co
 
 ## 2026-09-19: before/after pairs stack on mobile (supersedes the side-by-side rule above)
 User reversed the earlier decision. The four before/after pairs in “Designing for momentum” now stack vertically on mobile, before above after, so each screen is readable at full column width. Desktop keeps the two-column pair layout.
+
+
+## 2026-09-19: Connect source of truth
+The user commissioned Connect as a local case study. Edit `site/work/connect/connect-case-study.md` for copy and `scripts/sync-connect.mjs` for markup; human/agent HTML are generated. Reuse Super Agent styles and interactions, with Connect-specific image/table rules in `site/work/connect/connect.css`. Keep eight human sections, literal full Markdown for agents, native Framer imagery with rounded containers, and vertically stacked mobile image pairs. The contents list stops before reflections/footer. `npm run build` regenerates both case studies; `npm run check` detects stale output.

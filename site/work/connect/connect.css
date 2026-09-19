@@ -1,0 +1,13 @@
+/* Shared case-study typography, shell, navigation and interactions come from Super Agent. */
+.connect-page .study-intro img{aspect-ratio:auto}
+.connect-figure{margin:26px 0 32px}
+.connect-figure .study-zoom img{height:auto;display:block}
+.connect-page .study-pair .study-zoom{aspect-ratio:1.815}
+.connect-page .connect-diagrams .study-zoom{aspect-ratio:1.1}
+.connect-page .study-article th:first-child,.connect-page .study-article td:first-child{width:12%}
+.connect-page .study-article th:nth-child(2),.connect-page .study-article td:nth-child(2){width:30%}
+.connect-page .study-article li>ul,.connect-page .study-article li>ol{margin-top:12px;margin-bottom:0}
+.connect-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px;margin:26px 0 32px}
+.connect-flow .connect-figure{margin:0}
+.connect-flow .connect-figure:last-child{grid-column:1 / -1;width:calc(50% - 6px);justify-self:center}
+@media(max-width:767px){.connect-flow{grid-template-columns:minmax(0,1fr);gap:24px}.connect-flow .connect-figure:last-child{width:100%}}

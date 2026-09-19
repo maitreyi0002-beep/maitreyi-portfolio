@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Connect | For agents</title><link rel="icon" href="../../../assets/logo.svg" /><script>try{document.documentElement.dataset.theme=localStorage.getItem('maitreyi-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{}</script><link rel="stylesheet" href="../../../styles.css" /><style>main{max-width:568px;margin:auto;padding:40px 24px 70px}nav{margin:0 0 32px;display:flex;flex-wrap:wrap;gap:12px 20px;width:auto;font-size:13px}pre{font:15px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);margin:0}nav a,nav button{text-decoration:underline;text-underline-offset:4px;font:inherit;padding:0}@media(max-width:370px){main{padding-inline:18px}}</style><script src="../../../app.js" defer></script></head><body><main><nav aria-label="Agent view controls"><a href="../">Human view</a><a href="../connect-case-study.md">Raw Markdown</a><button id="copy-profile">Copy Markdown</button><button id="theme-toggle">Light / dark</button></nav><pre id="profile-text">---
+title: &quot;Connect: Turning a Hand-Held Sales Process into a Self-Serve Product&quot;
+author: Maitreyi Sharma
+role: User Researcher, System Designer, UX Design
+company: Loop AI (AI-powered restaurant operations platform)
+timeline: June – August 2026
+focus: Complex integrations &amp; onboarding
+source_url: https://uxmaitreyii.framer.website/connect
+portfolio_url: https://uxmaitreyii.framer.website
+contact: maitreyi0002@gmail.com
+---
+
+# Connect: Turning a Hand-Held Sales Process into a Self-Serve Product
+
+[image: hero — Loop Connect &quot;Connect any data source&quot; page on a desktop monitor]
+
+## 0. Quick facts (for agents)
+
+&gt; **Image markers:** `[image: …]` shows where a product screenshot or diagram sits on the original page. Before/after pairs are marked &quot;before&quot; (old version) and &quot;after&quot; (Connect).
+
+| Field | Value |
+|---|---|
+| Product | Loop Connect — the self-serve integrations and onboarding experience for getting a restaurant's data into Loop |
+| My role | User Researcher, Systems &amp; IA Designer, UI &amp; Content Designer |
+| Timeline | June – August 2026 |
+| Focus | Complex integrations &amp; onboarding |
+| Research base | 2,419 customer call recordings + 183 support email threads |
+| Core move | 70+ bespoke connector flows → 6 reusable patterns on one 4-step backbone, plus a &quot;Step 0&quot; delegation layer |
+| Outcome | A people-dependent CSM process turned into a product that runs on its own: no-login delegate links, live &quot;who-acts&quot; status, automated access checks |
+
+### Key numbers at a glance
+
+| Metric | Value | Meaning |
+|---|---|---|
+| Integration types | 50+ (and growing) | Each set up slightly differently, by hand |
+| Customers who wanted to connect vs. made it through | 68 vs. 8–10 | The old process lost most customers |
+| External wizard completions | 0% (0 of 165 external visitors) | The old setup wizard was effectively an internal-only tool |
+| Operators who delegate technical setup | 96% | The buyer is almost never the person doing setup |
+| &quot;Copy email&quot; clicks | 124 clicks by 33 users | Doubt-driven repeat actions |
+| Vendor export enable time | 5–7+ business days | Spinners promised seconds |
+| CSM time spent chasing status | 60% of their week | Humans acting as a routing switchboard |
+| Bespoke connector flows mapped | 70+ → 6 patterns | Systems work, not screen work |
+| Bypass Track | 4-link, 2-week wait → 10-second paste | For users who already hold an API credential |
+
+---
+
+## 1. Context &amp; my role
+
+Loop is a B2B analytics platform for restaurant operators. But before an operator could see a single number in Loop, we needed data from their POS, accounting software, delivery apps, review platforms, and a dozen other places.
+
+The problem: getting that data into Loop wasn't really a product experience. It was a CSM sending emails, updating spreadsheets, jumping on calls, and working out a slightly different setup for every customer. Across **50+ integration types** (and growing), the process had quietly become a collection of workarounds held together by people.
+
+And it showed. **Of the 68 customers who said they wanted to connect their stack, only 8–10 actually made it through.**
+
+So the challenge wasn't just to redesign integrations. It was to **turn a process that depended on people into a product that could run on its own.**
+
+### What I owned
+
+1. **User Researcher** — dug through **2,419 customer calls** and **183 support threads** to find where integration setups were actually breaking down.
+2. **Systems &amp; IA Designer** — mapped **70+ bespoke connector flows into 6 reusable patterns**, then designed Connect around them: a 4-step setup journey, an upfront delegation layer, live status tracking, and the workspace operators use to manage their connections.
+3. **UI &amp; Content Designer** — owned UI and content end-to-end, including interface copy grounded in the language customers were already using with us.
+
+---
+
+## 2. Secondary &amp; field research: the numbers
+
+### 2.1 Quantitative reality check
+
+| Metric | Key insight | Strategic takeaway |
+|---|---|---|
+| **0%** | Zero external wizard completions | Out of 165 external users visiting the connectors page, zero completed the existing wizard. The setup wizard was effectively an internal-only tool. |
+| **96%** | The delegation reality | 96% of restaurant operators who purchase Loop never execute technical setup themselves. It almost always gets passed to an IT delegate. |
+| **124x** | Doubt-driven repeat actions | 33 users clicked &quot;Copy email&quot; 124 times, and a dedicated &quot;I added the email again&quot; button existed purely to soak up user uncertainty. |
+
+### 2.2 The invisible triangle of dependencies
+
+An operator trying to get their data into Loop had to juggle three parties, asynchronously and invisibly:
+
+- **The IT Delegate** — forwarded a link mid-flow with zero context, and forced to create a full Loop account just to see instructions.
+- **The Vendor Rep** — account managers at Toast, Qu, or Harri who had to enable exports behind closed doors.
+- **Loop's CS Team** — manually nudging via email threads, with no shared in-product visibility.
+
+### 2.3 Four problems the research surfaced
+
+1. **Account bloat** — forcing IT contractors into permanent admin roles just to read a 2-step guide.
+2. **Unbounded latency** — spinners promised seconds; vendor export enables took 5–7+ business days.
+3. **Whose move is it?** — 3 parties waiting on each other with zero shared state visibility.
+4. **Silent failures** — feeds died quietly upstream; users only noticed a month later in broken reports.
+
+---
+
+## 3. Primary research: voices of users &amp; personas
+
+**2,419 call recordings analyzed · 183 support email threads audited**
+
+### 3.1 The Operator / GM (96% delegation rate)
+
+&gt; &quot;Are you able to pull that from QSRSoft? I'm going to forward this to my IT guy.&quot;
+
+**Mindset:** Owns the business outcome and the Loop contract. The moment a screen mentions credentials, API keys, or SFTP, they delegate. They strongly resist cluttering their workspace by adding outside IT contractors to their permanent user seats.
+
+### 3.2 The IT Delegate
+
+&gt; &quot;I'm going to fumble around and misrepresent things... just give me the exact steps.&quot;
+
+**Mindset:** An external consultant or fractional IT manager. They land mid-flow with zero platform context. They don't want another login or a new UI to learn; they need a single standalone link with step-by-step instructions and copy-paste parameters.
+
+### 3.3 The Third-Party Vendor Rep
+
+&gt; &quot;Please allow 3–5 business days for our integrations team to process the SFTP export.&quot;
+
+**Mindset:** Account reps at Toast, Qu, or Harri. They have no relationship with Loop and won't respond to Loop directly. They only act when the customer emails them with the exact required phrasing.
+
+### 3.4 The Internal CSM
+
+&gt; &quot;I'm trying to explain connectors, but then I have to explain that Toast is included in their tech stack...&quot;
+
+**Mindset:** Acting as a human routing switchboard. Spends **60% of their week** emailing customers to ask &quot;Did your Toast rep enable SFTP yet?&quot; Needs the system to track who holds the ball automatically.
+
+---
+
+## 4. The breakthrough: the &quot;Step 0&quot; solution
+
+### 4.1 Eliminating account bloat for one-time tasks
+
+Our call audits exposed a fundamental flaw in standard B2B onboarding: **the buyer wasn't the person doing the setup.**
+
+Loop required those consultants to become full users just to access a setup guide — unnecessary invites, account creation, and privacy friction before they could even start. So we added a **zero step** before any other setup begins.
+
+**Intent check:** the setup dialog opens by asking, *&quot;Are you setting this up now, or delegating to an IT/vendor partner?&quot;*
+
+[image: Step 0 dialog — &quot;Are you the admin for this connector?&quot; with &quot;Yes, I'm the admin&quot; / &quot;No, someone else manages it&quot; and delegate name + email fields]
+
+**Old way vs. new way:**
+
+- **The old way — forced registration:** Operator lands → tries to understand an interface full of words like SFTP and APIs → must add IT guy as a user → IT guy receives the invite → creates a password → lost in the full UI → eventually figures it out and finishes setup.
+- **The new way — Step 0 delegation engine:** Operator lands → one simple question (&quot;Are you the admin for this connector?&quot;) → delegates it to IT → IT guy receives a standalone, no-login guide with full steps → completes the visual guide → smooth handoff to a Loop CSM for access verification.
+
+[image: diagram — the old way (forced registration) vs. the new way (Step 0 delegation engine)]
+
+### 4.2 Three concepts for what to send the IT delegate
+
+**Idea 1 — The in-portal browser extension (killed)**
+
+- **Concept:** An interactive Chrome extension the IT delegate installs. When they open Toast, QuickBooks, or Google Business, it overlays tooltips on the third-party UI to highlight the exact buttons to click.
+- **Why we killed it:** It solved guidance but created a mess. Asking an external contractor to install an extension and grant invasive browser permissions before delivering any value adds instant friction. And building and maintaining custom DOM scrapers for 70+ evolving third-party portals was an engineering nightmare we couldn't justify.
+
+**Idea 2 — Audio &amp; video guides, Loom-style (killed)**
+
+- **Concept:** Embedded video walkthroughs or audio tracks so the delegate could listen in the background while switching tabs.
+- **Why we killed it:** It broke under real-world behavior.
+  - *The pacing trap:* users don't work at the speed of a video; they'd constantly tab back and scrub to find where they left off.
+  - *Content mismatch:* many steps weren't UI clicks — they were pre-formatted email templates for vendor reps. You can't dictate a 3-paragraph technical email over audio.
+  - *Production &amp; tracking overhead:* CSMs were already overloaded, and maintaining hundreds of videos across 50+ changing portals wasn't sustainable. Worse, video gave zero insight into whether a user had completed a step or got stuck.
+
+**Idea 3 — The step-locked interactive standalone link (what we built)**
+
+- **Concept:** A no-login standalone URL sent directly to the delegate's inbox.
+- **Why it won:**
+  1. **Zero authentication friction** — opens instantly: no account, no password, no software to install.
+  2. **Step-locked visual clarity** — high-contrast, annotated screenshots of third-party screens with highlighted step indicators, paired with 1-click copyable email templates for vendor reps.
+  3. **Progress tracking &amp; self-paced control** — users mark each discrete step as done at their own pace, giving Loop full visibility into where the task is, without guessing.
+  4. **Built-in &quot;Request Help&quot; lifeline** — if a portal looks different or a step fails, a &quot;Get Help&quot; button lets the delegate request CSM intervention or trigger a joint call right from the guide.
+
+[image: standalone delegate guide — &quot;Set up the QSR Soft connector&quot;, 3 step-locked steps with copyable Loop mailbox email, &quot;Mark step done&quot; and &quot;Stuck? Talk to us&quot;]
+
+---
+
+## 5. How might we…
+
+&gt; How might we turn 70+ hand-held integration flows into one self-serve journey across three parties, without losing trust or handoff visibility?
+
+---
+
+## 6. The 6 core connector patterns
+
+Rather than designing 70+ bespoke flows, we distilled them into **6 reusable interaction patterns**, all built on the same 4-step backbone:
+
+| # | Pattern | How it works |
+|---|---|---|
+| 1 | **Zero-Touch** (identity confirmation) | Loop already holds platform keys (e.g. Yelp, Ovation). The user or delegate just verifies account ownership and location mappings. |
+| 2 | **Two-Track** (user + rep in parallel) | Quick user account access combined with a quiet, parallel vendor export ticket (e.g. Toast SFTP). |
+| 3 | **Authorize-Only** (direct rep handoff) | The delegate triggers one prefilled email template; credentials flow directly from vendor rep to Loop — the customer never handles sensitive keys. |
+| 4 | **Single-Invite** (add system user) | Granting dedicated user permissions to Loop (e.g. Google Business Profile). |
+| 5 | **Credential Paste** (direct API keys) | Direct entry of Client IDs, Client Secrets, and Base URLs (e.g. QuickBooks, Toast API). |
+| 6 | **Bypass Track** (smart branching) | Asks upfront: &quot;Do you already hold a direct API credential?&quot; Collapses a 4-link, 2-week vendor approval wait into an instant 10-second paste. |
+
+### 6.1 The universal skeleton
+
+```
+Step 0: Delegate → Step 1: Grant access → Step 2: Access check → Step 3: Data ingestion → Step 4: Live
+```
+
+### 6.2 Older design versions
+
+[image: older version — &quot;Connect Qu&quot; modal with an email template for the Qu account rep]
+
+### 6.3 Current flow vs. ideal flow
+
+**Current flow (before):**
+
+1. **Discovery** — AE captures tech stack; customer lands on a page with 100 options and an unguided integration grid.
+2. **Attempt** — operator gets stuck at credential prompts and abandons.
+3. **Handoff chaos** — CSM emails manual instructions; operator tries to add IT delegate to Loop.
+4. **The black hole** — customer sends a vendor email; Loop shows zero state changes.
+5. **Silent churn** — customer emails after 3 weeks asking &quot;Is this live yet?&quot;, or churns quietly before seeing value.
+
+**Ideal flow (Connect):**
+
+1. **Console set** — AE captures tech stack; the customer's actual stack opens pre-populated under &quot;Ready to Connect&quot;. Other options stay hidden until there's intent to add more.
+2. **Delegation** — operator sends a no-login standalone guide to their IT delegate in under 10 seconds.
+3. **Guided action** — delegate follows exact visual guidance and CCs Loop on the pre-filled vendor request.
+4. **Access check** — Loop's backend validates credentials automatically: no self-attestation, no doubt-driven repeat clicks.
+5. **Time-honest process** — ownership flips to &quot;Waiting on Loop&quot;; real-time ingestion status streams into the persistent artifact workspace.
+
+### 6.4 New flow
+
+[image: new flow 1 — Connect QSR Soft, Grant Access (delegated, &quot;Waiting on James&quot;)]
+[image: new flow 2 — Connect QSR Soft, Access Check running (&quot;This approval can take 2 weeks&quot;)]
+[image: new flow 3 — Connect QSR Soft, Data ingestion (&quot;This step takes approx 24 hrs&quot;)]
+[image: new flow 4 — Connect QSR Soft, Live (&quot;Your connection is live&quot;)]
+[image: new flow 5 — Connect QSR Soft, Share additional context]
+
+---
+
+## 7. Designing for human friction: small solutions
+
+### 7.1 Explicit &quot;who-acts&quot; state boundaries
+
+Instead of generic &quot;Pending&quot; pills, every row and modal explicitly names the responsible party and a realistic elapsed duration (e.g. &quot;Waiting on James — reminder sent to James on Jul 31 by Loop&quot;).
+
+[image: who-acts state — before]
+[image: who-acts state — after]
+
+### 7.2 Time honesty &amp; thresholds over fake spinners
+
+Spinners promise seconds, but vendor approvals take days. We eliminated loading spinners entirely. When a task enters a vendor or backend queue, the system shows clear elapsed markers (*&quot;Step takes approximately 24 hrs&quot;*), communicating exactly how long it might take before the user can move forward.
+
+[image: time honesty — before]
+[image: time honesty — after]
+
+### 7.3 Backend access check over self-attestation
+
+We removed the ambiguous &quot;I added the email&quot; button. Connect uses automated backend polling to verify permissions. If a setup fails, the flow regresses to the exact broken step with a specific diagnostic message (*&quot;Role granted was 'Site Manager'. Google Business requires 'Manager' permissions.&quot;*).
+
+[image: backend access check — before]
+[image: backend access check — after]
+
+### 7.4 Final Connect page redesign
+
+[image: Connect page — before]
+[image: Connect page — after]
+
+---
+
+## 8. Reflections &amp; takeaways
+
+1. **Systems beat screens.** The most impactful deliverable wasn't drawing UI dialogs — it was classifying 50+ (and growing) chaotic, full-fledged flows into 6 reusable patterns. Once the architecture was set, adding a new connector became a configuration task rather than an engineering project.
+2. **Design for the real actor, not the buyer.** Recognizing that 96% of operators delegate technical tasks led directly to &quot;Step 0&quot;. Removing the need for IT delegates to create permanent Loop accounts removed the single largest friction barrier in the whole onboarding funnel.
+3. **Honesty as an interaction material.** A flow with this many stakeholders needs transparent communication. Replacing fake spinners with explicit &quot;who-acts&quot; labels, realistic duration targets, and automated failure regression built customer trust where silence had previously created churn.
+</pre><div id="announcement" role="status" aria-live="polite"></div></main></body></html>

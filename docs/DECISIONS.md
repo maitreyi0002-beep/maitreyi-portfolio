@@ -112,3 +112,11 @@ Validation: check/build passed. Desktop screenshots confirmed initial contents p
 User reversed the earlier "keep the four before/after pairs side by side on mobile" decision. In "Designing for momentum", each pair now stacks vertically below 768px — before above after — so each screen is legible at full column width. Desktop retains the two-column pair layout.
 
 Implementation: the mobile rule in `site/work/super-agent/case-study.css` sets `.study-pair` to a single column with an 18px gap, chosen so the "Before" caption reads as attached to its own image rather than the one following. Only that media query changed; the desktop rule, the `aspect-ratio:1` frames, and the galleries are untouched.
+
+
+## 2026-09-19: Connect case study
+User commissioned a local Connect page using the approved Super Agent format, rounded screenshots, the same top navigation and footer, and a left contents list. Copy is preserved from the supplied `connect-case-study.md`; the agent-only quick facts and frontmatter appear only in the literal Markdown agent view. This supersedes the earlier landing-only scope for Connect.
+
+Implementation: `scripts/sync-connect.mjs` generates the human/agent pages from `site/work/connect/connect-case-study.md`. It reuses Super Agent CSS and interaction JavaScript, with local image/table styles in `site/work/connect/connect.css`. The reading column is 520px, and the sticky contents wrapper ends before reflections. All eight human sections are retained. Twenty native-resolution Framer assets are stored locally, with source URLs in `docs/SOURCES.md`; screenshots enlarge on click/keyboard. Five sequential new-flow screens form a two-column desktop gallery and single-column mobile stack; before/after pairs also stack vertically on mobile. Metrics and quotes are supplied author claims, not independently verified outcomes.
+
+The homepage now links to `work/connect/`. Its old 22-workflow summary conflicted with the supplied 70+ flow count, so the summary now says “complex workflows” without a number; the case study retains the supplied wording. Global agent files are regenerated from that homepage. No new dependencies.

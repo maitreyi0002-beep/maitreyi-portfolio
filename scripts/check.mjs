@@ -30,8 +30,8 @@ for (const file of (await walk(root)).filter((p) => p.endsWith(".html"))) {
       `Missing ${target}`,
     );
   }
-  // Preserve punctuation in the user-supplied Super Agent case-study copy.
-  if (!file.includes('/work/super-agent/'))
+  // Preserve punctuation in the user-supplied case-study copy.
+  if (!file.includes('/work/super-agent/') && !file.includes('/work/connect/'))
     assert.ok(!/[—–]/.test(html), `${file}: unexpected em/en dash`);
 }
 const homepage = await readFile(resolve(root, "index.html"), "utf8");

@@ -1,8 +1,26 @@
 // Progressive enhancement: all portfolio content and links work without JavaScript.
 const root = document.documentElement;
 const themeButton = document.querySelector("#theme-toggle");
-const soundButton = document.querySelector("#sound-toggle");
 const announcement = document.querySelector("#announcement");
+
+// Every click across the site plays a short recorded click. This script loads at
+// varying folder depths (homepage, case study, both agent routes), so the asset
+// path is resolved against this script's own URL rather than the page's, which
+// would otherwise break on every page except the homepage.
+const clickSound = new Audio(
+  new URL("assets/audio/click.mp3", document.currentScript?.src || location.href).href,
+);
+clickSound.preload = "auto";
+clickSound.addEventListener("error", () =>
+  console.warn("Click sound failed to load or decode:", clickSound.src, clickSound.error),
+);
+document.addEventListener("click", () => {
+  clickSound.currentTime = 0;
+  clickSound.play().catch(() => {
+    /* Browsers refuse audio before any interaction; the very click that would
+       start it is itself the required gesture, so this only fails in edge cases. */
+  });
+});
 const getPreference = (key) => {
   try {
     return localStorage.getItem(key);
@@ -80,72 +98,101 @@ systemTheme.addEventListener("change", (event) => {
     setTheme(event.matches ? "dark" : "light");
 });
 
-// Short, low-volume tactile tones are synthesized locally. No audio downloads or tracking.
-let soundEnabled = false; // Sound design deferred; no mute control or hidden audio preference.
-let audioContext;
-let lastTone = 0;
-const syncSound = () => {
-  soundButton?.setAttribute("aria-pressed", String(soundEnabled));
-  soundButton?.setAttribute(
-    "aria-label",
-    soundEnabled ? "Mute interaction sounds" : "Enable interaction sounds",
-  );
-  if (soundButton) soundButton.title = soundEnabled ? "Sound on" : "Sound off";
-};
-async function playTone(kind = "tap") {
-  if (!soundEnabled || performance.now() - lastTone < 90) return;
-  const AudioConstructor = window.AudioContext || window.webkitAudioContext;
-  if (!AudioConstructor) return;
-  try {
-    audioContext ||= new AudioConstructor();
-    if (audioContext.state === "suspended") await audioContext.resume();
-    lastTone = performance.now();
-    const time = audioContext.currentTime;
-    const oscillator = audioContext.createOscillator();
-    const envelope = audioContext.createGain();
-    oscillator.type = "sine";
-    const pitch = kind === "hello" ? 620 : kind === "hover" ? 390 : 470;
-    oscillator.frequency.setValueAtTime(pitch, time);
-    oscillator.frequency.exponentialRampToValueAtTime(
-      pitch * 0.45,
-      time + 0.09,
-    );
-    envelope.gain.setValueAtTime(0, time);
-    envelope.gain.linearRampToValueAtTime(
-      kind === "hover" ? 0.018 : 0.04,
-      time + 0.004,
-    );
-    envelope.gain.exponentialRampToValueAtTime(0.0001, time + 0.12);
-    oscillator.connect(envelope);
-    envelope.connect(audioContext.destination);
-    oscillator.start(time);
-    oscillator.stop(time + 0.14);
-    oscillator.onended = () => {
-      oscillator.disconnect();
-      envelope.disconnect();
+// Hovering the cherry blossom header plays a supplied recording. Leaving partway
+// through does not cut it off, but it does not run to the clip's full five seconds
+// either: it keeps going for up to two more seconds, then fades out over 250ms
+// so the cutoff never pops. Escape stops it immediately, keeping a keyboard-reachable
+// way to silence sound that plays longer than a few seconds.
+const canopy = document.querySelector(".blossom-canopy[data-audio]");
+if (canopy) {
+  const LEAVE_GRACE_MS = 2000;
+  const FADE_MS = 250;
+  let ambient;
+  let leaveTimer = 0;
+  let fadeFrame = 0;
+  const cancelLeaveFade = () => {
+    clearTimeout(leaveTimer);
+    cancelAnimationFrame(fadeFrame);
+  };
+  const getAmbient = () => {
+    if (!ambient) {
+      ambient = new Audio(canopy.dataset.audio);
+      ambient.preload = "auto";
+      ambient.addEventListener("ended", () => {
+        cancelLeaveFade();
+        ambient.currentTime = 0;
+        ambient.volume = 1;
+      });
+      // Surfaced only in the console: playback failure must never break the page.
+      ambient.addEventListener("error", () =>
+        console.warn(
+          "Cherry blossom audio failed to load or decode:",
+          canopy.dataset.audio,
+          ambient.error,
+        ),
+      );
+    }
+    return ambient;
+  };
+  const fadeOutAndStop = () => {
+    const audio = ambient;
+    const start = performance.now();
+    const step = (now) => {
+      const progress = Math.min((now - start) / FADE_MS, 1);
+      audio.volume = 1 - progress;
+      if (progress < 1) {
+        fadeFrame = requestAnimationFrame(step);
+      } else {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.volume = 1;
+      }
     };
-  } catch {
-    /* Audio must never interrupt navigation. */
-  }
+    fadeFrame = requestAnimationFrame(step);
+  };
+  // Safari and Chrome both require a real user gesture before the first play().
+  // A hover is never a gesture, so the very first click/keypress on the page primes
+  // playback once here; every later hover then plays without re-asking permission.
+  const unlockAmbient = () => {
+    const audio = getAmbient();
+    audio
+      .play()
+      .then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      })
+      .catch(() => {
+        /* Priming can fail silently; the next real hover will just try again. */
+      });
+  };
+  document.addEventListener("pointerdown", unlockAmbient, { once: true });
+  document.addEventListener("keydown", unlockAmbient, { once: true });
+  canopy.addEventListener("pointerenter", (event) => {
+    if (event.pointerType === "touch") return;
+    const audio = getAmbient();
+    cancelLeaveFade();
+    audio.volume = 1;
+    if (!audio.paused) return; // Already mid-clip: let it continue rather than restart.
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+      /* Browsers refuse audio until the visitor has interacted; fail silently. */
+    });
+  });
+  canopy.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "touch" || !ambient || ambient.paused) return;
+    cancelLeaveFade();
+    leaveTimer = setTimeout(fadeOutAndStop, LEAVE_GRACE_MS - FADE_MS);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && ambient && !ambient.paused) {
+      cancelLeaveFade();
+      ambient.pause();
+      ambient.currentTime = 0;
+      ambient.volume = 1;
+    }
+  });
 }
-syncSound();
-soundButton?.addEventListener("click", () => {
-  soundEnabled = !soundEnabled;
-  syncSound();
-  setPreference("maitreyi-sound", soundEnabled ? "on" : "off");
-  if (announcement)
-    announcement.textContent = soundEnabled
-      ? "Interaction sounds on"
-      : "Interaction sounds off";
-  if (soundEnabled) playTone();
-});
-document.addEventListener("click", (event) => {
-  if (
-    event.target.closest("a,button") &&
-    !event.target.closest("#sound-toggle,#logo-mark")
-  )
-    playTone();
-});
+
 // A new mark replaces the face. Replay switches between identical draw animations.
 const logo = document.querySelector("#logo-mark");
 logo?.addEventListener("click", () => logo.classList.toggle("replay"));

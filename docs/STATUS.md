@@ -135,3 +135,7 @@ The theme toggle is now a sun/moon pill with a sliding knob, and switching theme
 
 Validation: `npm run check` and `npm run build` passed and `node --check` passed on `site/app.js`. Box-model math was recomputed against the global `border-box` reset after an initial padding error would have overflowed the icons. User reviewed the switch and the icon spacing in the browser and approved both. No agent-side browser verification was performed this session because no browser tool was available; reduced-motion and no-JavaScript fallbacks were reviewed in source only and remain visually unconfirmed.
 
+## 2026-09-19: interaction audio
+Hover-to-play ambient sound on the cherry blossom header and a site-wide click sound are both live, using two of the user's supplied recordings. The prior dead click-tone system tied to a nonexistent `#sound-toggle` button was removed.
+
+Validation: `npm run check` and `npm run build` passed; `node --check` passed on `site/app.js`; URL resolution for both the hover clip (page-specific `data-audio` attribute) and the click sound (script-relative `document.currentScript.src`) was verified by simulating browser URL-resolution rules for every page depth in the site, since no browser tool was available this session. The user tested and iterated on the hover behavior directly in-browser across several rounds (volume, leave timing) and confirmed it working; the click sound has not yet had that same in-browser confirmation round.

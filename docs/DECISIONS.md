@@ -128,3 +128,13 @@ Implementation: markup lives in `site/index.html` and the case-study header temp
 
 The reveal uses the native View Transitions API: `::view-transition-old/new(root)` have their default animations removed, and the new snapshot is clipped by a circle animated from the switch centre to the farthest corner. No library was added, preserving the dependency-free architecture. `prefers-reduced-motion: reduce` and browsers lacking `startViewTransition` fall back to an instant switch.
 
+## 2026-09-19: interaction audio (user)
+User asked to wire real hover and click sound effects using supplied recordings, then iterated on level and timing across several rounds after direct feedback ("very loud", "stays too briefly on leave", grace period reduced from 3s to 2s).
+
+Implementation: cherry blossom hover clip in `site/app.js` is a 5-second `Audio()` triggered on `pointerenter`, primed on the page's first `pointerdown`/`keydown` (browsers block unmuted `play()` before any gesture, and hover never qualifies as one). Leaving the hover zone starts a 2-second grace timer rather than stopping playback immediately; if the pointer doesn't return, a 250ms `requestAnimationFrame` volume ramp fades it out to avoid a hard pop, since the cut can land at an arbitrary point in the clip rather than at its own baked-in ending. Escape stops it immediately, which is the one stop control offered per WCAG 1.4.2 for sound that runs past ~3 seconds. Re-entering the hover zone while already playing does not restart it.
+
+Click sound is a flat `document.addEventListener("click", ...)` with no target filtering, per an explicit "every click across the whole site" request — a deliberately broader scope than the old removed system, which only fired on links and buttons. Click events are themselves a valid user gesture, so no priming is needed there. Because `app.js` is shared across four page depths, the audio URL is resolved via `new URL("assets/audio/click.mp3", document.currentScript.src)` rather than a page-relative string, which would only have been correct on the homepage.
+
+The old synthesized-tone system (`playTone`, `soundEnabled`, references to a `#sound-toggle` button absent from every page's markup) was deleted outright rather than given a new UI, since reviving it would have contradicted the existing opt-in-sound decision from 2026-09-14.
+
+Asset handling: no MP3 encoder exists on this machine (afconvert decodes MP3 but cannot encode it; no ffmpeg or lame installed), so the shipped clips are AAC (`.m4a`) despite the supplied sources being `.mp3`. Only the two files actually referenced in code are committed; unused supplied recordings stay local and untracked.

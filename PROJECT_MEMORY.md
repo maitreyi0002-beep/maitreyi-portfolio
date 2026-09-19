@@ -139,3 +139,11 @@ Theme changes now run through `document.startViewTransition`, with a `clip-path`
 
 User approved the design and the spacing after review. The removed visible "Dark" label is an implementation choice they accepted in the same review.
 
+## 2026-09-19: interaction audio
+User supplied several recordings in `site/assets/audio/`; only the two actually wired in are committed (`cherry-blossom.m4a`, `click.mp3`) — the rest (water sounds, chalk, the raw 6-minute and 23-second cherry blossom sources) stay local and untracked until something references them, to avoid shipping unused audio weight.
+
+Cherry blossom hover: the shipped clip is a 5-second, gained, faded excerpt from the user-supplied "new cherry blossom.mp3", re-encoded to AAC (`.m4a`) since this Mac has no MP3 encoder available (afconvert decodes MP3 but cannot encode it, no ffmpeg or lame installed). Hovering plays it; leaving early no longer stops it immediately but lets it continue for 2 more seconds before a 250ms fade-out, so a quick pass across the tree doesn't cut the sound off abruptly. Escape stops it at once. Playback is primed on the page's first click or keypress, since browsers require a real gesture before the first unmuted play() and hover never counts as one.
+
+Click sound: every click anywhere on the site plays `click.mp3` directly, no restriction to interactive elements. Because `app.js` loads at different folder depths across the site (homepage, its agent view, the Super Agent case study, and its agent view), the audio path is resolved against `document.currentScript.src` rather than a hardcoded relative path, so it works correctly regardless of which page loaded the script.
+
+The previous synthesized click-tone system (Web Audio oscillator tones gated by a `#sound-toggle` button) was deleted rather than revived. That button had already been removed from every page's markup, leaving the gating flag permanently stuck off with no way to enable it — dead code, not a working opt-in.

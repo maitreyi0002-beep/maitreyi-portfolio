@@ -11,6 +11,8 @@ const types = {
   ".webp": "image/webp",
   ".ttf": "font/ttf",
   ".woff2": "font/woff2",
+  ".m4a": "audio/mp4",
+  ".mp3": "audio/mpeg",
   ".txt": "text/plain; charset=utf-8",
   ".json": "application/json",
   ".md": "text/plain; charset=utf-8",

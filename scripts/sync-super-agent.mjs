@@ -2,6 +2,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 const base = new URL('../site/work/super-agent/', import.meta.url);
 const raw = await readFile(new URL('super-agent-case-study.md', base), 'utf8');
+const systemUrl = raw.match(/^design_system_url:\s*(https:\/\/\S+)/m)?.[1];
+if (!systemUrl) throw new Error('Missing design system URL in the case-study source');
 const home = await readFile(new URL('../site/index.html', import.meta.url), 'utf8');
 const esc = s => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const inline = s => esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>');
@@ -27,8 +29,8 @@ function images(markers) {
   throw new Error(`Unmapped image markers: ${s}`);
 }
 const sections = [...raw.slice(raw.indexOf('## 1. About the project')).matchAll(/^## \d+\. (.+)\n([\s\S]*?)(?=^## \d+\.|$(?![\s\S]))/gm)];
-const ids=['about','problem','behavior','identity','architecture','friction','takeaways','system'];
-const shortTitles=['About the project','The wrong-door problem','Real behavior','Visual identity','Architecture','Human friction','What I took away','The design system'];
+const ids=['about','problem','behavior','identity','architecture','friction','takeaways'];
+const shortTitles=['About the project','The wrong-door problem','Real behavior','Visual identity','Architecture','Human friction','What I took away'];
 function render(md) {
   const lines=md.trim().split('\n'); let out='';
   for(let i=0;i<lines.length;) {
@@ -56,10 +58,10 @@ const page=`<!doctype html>
 <link rel="icon" href="../../assets/logo.svg" /><link rel="alternate" type="text/markdown" href="super-agent-case-study.md" title="Super Agent for agents" />
 ${initTheme}<link rel="stylesheet" href="../../styles.css" /><link rel="stylesheet" href="case-study.css" /><script src="../../app.js" defer></script><script src="../../landscape.js" defer></script><script src="case-study.js" defer></script></head>
 <body class="study-page" id="top"><a class="skip-link" href="#main">Skip to case study</a>
-<header class="study-header"><div class="page-shell"><div class="study-header-inner">${logo}<nav aria-label="Case study navigation"><a href="../../index.html#work">← Back</a><a href="#connect">Contact</a><a href="agents/">For agents</a><button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="theme-track" aria-hidden="true"><span></span></span><span class="sr-only">Dark theme</span></button></nav></div></div></header>
-<main id="main" class="page-shell"><header class="study-intro"><h1>Super Agent:<br />One Front Door</h1><p>Designing an AI that understands intent, not interfaces.</p><figure>${img('hero.png','Super Agent landing screen: What can we help you with today?',true)}</figure></header>
+<header class="study-header"><div class="page-shell"><div class="study-header-inner">${logo}<nav aria-label="Case study navigation"><a href="../../index.html">Back to home</a><a href="#connect">Contact</a><a href="agents/">For agents</a><button id="theme-toggle" class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Dark theme"><span class="theme-track" aria-hidden="true"><span></span></span><span class="sr-only">Dark theme</span></button></nav></div></div></header>
+<main id="main" class="page-shell"><header class="study-intro"><h1>Super Agent: One Front Door</h1><p>Designing an AI that understands intent, not interfaces.</p><figure>${img('hero.png','Super Agent landing screen: What can we help you with today?',true)}</figure></header>
 <aside class="study-toc"><details open><summary>On this page</summary><nav aria-label="Contents"><ol>${toc}</ol></nav></details></aside>
-<article class="study-article">${sections.map((s,i)=>`<section id="${ids[i]}" aria-labelledby="${ids[i]}-title"><h2 id="${ids[i]}-title">${inline(s[1])}</h2>${render(s[2])}</section>`).join('\n')}</article>
+<article class="study-article">${sections.slice(0,7).map((s,i)=>`<section id="${ids[i]}" aria-labelledby="${ids[i]}-title"><h2 id="${ids[i]}-title">${inline(s[1])}</h2>${render(s[2])}</section>`).join('\n')}<div class="study-system-cta"><a href="${esc(systemUrl)}" target="_blank" rel="noopener noreferrer">View the full component set in Storybook <span aria-hidden="true">↗</span></a></div></article>
 <div class="study-return"><a href="../../index.html#work">← Selected work</a><a href="#top">Back to top ↑</a></div></main>
 ${footer}<dialog class="study-lightbox" aria-label="Enlarged project image"><form method="dialog"><button aria-label="Close enlarged image">Close ×</button></form><img alt="" /><p></p></dialog><div id="announcement" class="sr-only" role="status" aria-live="polite"></div></body></html>`;
 const agentPage=`<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Super Agent | For agents</title><link rel="icon" href="../../../assets/logo.svg" />${initTheme}<link rel="stylesheet" href="../../../styles.css" /><style>main{max-width:568px;margin:auto;padding:40px 24px 70px}nav{margin:0 0 32px;display:flex;flex-wrap:wrap;gap:12px 20px;width:auto;font-size:13px}pre{font:15px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);margin:0}nav a,nav button{text-decoration:underline;text-underline-offset:4px;font:inherit;padding:0}@media(max-width:370px){main{padding-inline:18px}}</style><script src="../../../app.js" defer></script></head><body><main><nav aria-label="Agent view controls"><a href="../">Human view</a><a href="../super-agent-case-study.md">Raw Markdown</a><button id="copy-profile">Copy Markdown</button><button id="theme-toggle">Light / dark</button></nav><pre id="profile-text">${esc(raw)}</pre><div id="announcement" role="status" aria-live="polite"></div></main></body></html>`;

@@ -55,3 +55,7 @@ User supplied all three experiments, superseding the placeholder requirement: co
 
 ## 2026-09-19: Super Agent source of truth
 The user has explicitly commissioned the Super Agent case study, superseding the original landing-only scope for this page. Edit `site/work/super-agent/super-agent-case-study.md` for copy and `scripts/sync-super-agent.mjs` for markup. Human and agent HTML are generated. Keep full supplied wording, homepage reading width, right desktop contents and centered top nav. Image layout follows the original Framer reference; do not widen the reading column or summarize the prose again.
+
+
+## 2026-09-19: Super Agent layout refinement
+Keep the case-study header sticky with an opaque background and border. The desktop contents list belongs on the left; mobile contents remains collapsible. Human content ends at “What I took away” and then links to the supplied Storybook component set. Preserve the full raw Markdown, including the design-system section, in the agent route.

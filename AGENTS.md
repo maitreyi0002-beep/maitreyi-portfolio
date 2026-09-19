@@ -67,3 +67,7 @@ The human Storybook link sits below the six design-system images. The desktop co
 
 ## 2026-09-19: before/after pairs stack on mobile (supersedes the side-by-side rule above)
 User reversed the earlier decision. The four before/after pairs in “Designing for momentum” now stack vertically on mobile, before above after, so each screen is readable at full column width. Desktop keeps the two-column pair layout.
+
+
+## 2026-09-19: theme switch redesign and circular reveal (user)
+User replaced the old two-tone track with a supplied reference design: a pill holding a sun and a moon, with a circular knob sliding under the active icon. Switching themes reveals the incoming theme as a circle growing from the switch to the far screen corner, via the native View Transitions API. The visible "Dark" text label is gone; the control carries screen-reader-only text instead, matching the case-study header. Keep the no-JavaScript and reduced-motion fallbacks intact.

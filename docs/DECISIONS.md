@@ -112,3 +112,11 @@ Validation: check/build passed. Desktop screenshots confirmed initial contents p
 User reversed the earlier "keep the four before/after pairs side by side on mobile" decision. In "Designing for momentum", each pair now stacks vertically below 768px — before above after — so each screen is legible at full column width. Desktop retains the two-column pair layout.
 
 Implementation: the mobile rule in `site/work/super-agent/case-study.css` sets `.study-pair` to a single column with an 18px gap, chosen so the "Before" caption reads as attached to its own image rather than the one following. Only that media query changed; the desktop rule, the `aspect-ratio:1` frames, and the galleries are untouched.
+
+
+## 2026-09-19: theme switch redesign and circular reveal (user)
+User supplied a reference image and asked for the toggle to match it, and for the theme change to start at the toggle as a circle expanding to full screen.
+
+Implementation: markup lives in `site/index.html` and the case-study header template in `scripts/sync-super-agent.mjs`, so both routes share one control; the agent routes keep their deliberately plain text button. The pill is 50x26 with 1px border and 2px padding; each half is 22px, holding a 14px icon with 4px side margins, and the 20px knob is inset 3px and translates 22px so it stays centred under either icon. Track and knob colours are scoped custom properties with a `prefers-color-scheme` fallback for the no-JavaScript case.
+
+The reveal uses the native View Transitions API: `::view-transition-old/new(root)` have their default animations removed, and the new snapshot is clipped by a circle animated from the switch centre to the farthest corner. No library was added, preserving the dependency-free architecture. `prefers-reduced-motion: reduce` and browsers lacking `startViewTransition` fall back to an instant switch.

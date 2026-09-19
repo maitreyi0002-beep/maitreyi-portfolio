@@ -769,10 +769,19 @@ h1 {
 .site-header { position:absolute; top:26px; right:30px; padding:0; z-index:4; }
 .site-header nav { display:flex; flex-direction:column; align-items:flex-end; gap:10px; font-size:14px; margin:0; }
 .site-header .agent-toggle { margin:0; min-height:30px; font-size:13px; }
-.theme-switch { display:flex; align-items:center; gap:8px; padding:5px 0; font-size:12px; min-height:34px; }
-.theme-track { width:32px; height:18px; border-radius:12px; border:1px solid var(--muted); padding:2px; }
-.theme-track span { display:block; width:12px; height:12px; border-radius:50%; background:var(--text); transition:transform .2s; }
-[aria-checked="true"] .theme-track span { transform:translateX(12px); }
+.theme-switch { display:flex; align-items:center; padding:5px 0; font-size:12px; min-height:34px; }
+.theme-track { --track-bg:#fff; --track-line:#e4e7ec; --knob-bg:#e8edf7; position:relative; display:flex; width:50px; height:26px; padding:2px; border-radius:13px; background:var(--track-bg); border:1px solid var(--track-line); }
+:root[data-theme="dark"] .theme-track { --track-bg:#101215; --track-line:#2a2e34; --knob-bg:#2f353e; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) .theme-track { --track-bg:#101215; --track-line:#2a2e34; --knob-bg:#2f353e; } }
+.theme-knob { position:absolute; top:2px; left:3px; width:20px; height:20px; border-radius:50%; background:var(--knob-bg); transition:transform .3s cubic-bezier(.32,.72,.35,1); }
+[aria-checked="true"] .theme-knob { transform:translateX(22px); }
+.theme-icon { position:relative; width:14px; height:14px; margin:3px 4px; fill:none; stroke:#9aa3af; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:stroke .25s; }
+[aria-checked="false"] .theme-icon.sun { stroke:#1a1d21; }
+[aria-checked="true"] .theme-icon.moon { stroke:#f4f6f8; }
+/* The new theme reveals as a circle growing from the switch. Default cross-fades are removed. */
+::view-transition-old(root),::view-transition-new(root) { animation:none; mix-blend-mode:normal; }
+::view-transition-old(root) { z-index:0; }
+::view-transition-new(root) { z-index:1; }
 .page-shell > .site-header { position:fixed; }
 .hero { padding-top:210px; }
 .intro-copy p { font-size:15px; line-height:1.5; }

@@ -123,3 +123,11 @@ Move the Storybook component-set button directly below the six-image design-syst
 Implementation: “Designing for momentum” is the chosen heading and contents label, pending Maitreyi’s wording feedback. The source Markdown and generated agent route use the same heading. A CSS sticky contents list now lives inside a grid wrapper that ends after the sixth section; “What I took away” sits outside that wrapper. The gallery renderer inserts the Storybook button immediately after the six component images, with 13px/16px padding; the outdated call-only note is omitted from the human rendering but retained in the complete Markdown source. The source’s final design-system section stays in agent Markdown, as previously requested.
 
 Validation: check/build passed. Desktop screenshots confirmed initial contents position and that its lower edge is above the viewport when the footer begins. At 390px, all four before/after pairs rendered as two equal columns without horizontal overflow; dark mobile text and image contrast were inspected. The human and agent pages remain generated from the Markdown. User satisfaction remains unconfirmed.
+
+
+## 2026-09-19: theme switch redesign and circular reveal
+User supplied a reference image for the theme toggle and commissioned the change directly. The switch is a 50x26 pill with a sun on the left and a moon on the right, both always visible, and a 20px knob that slides 22px between them. Active icon takes near-black on light and near-white on dark; the inactive icon stays mid grey. Track and knob use their own tokens so the control keeps its own contrast rather than inheriting page surfaces.
+
+Theme changes now run through `document.startViewTransition`, with a `clip-path` circle animated from the switch centre to the farthest viewport corner over 520ms. Default view-transition cross-fades are disabled so the change reads as a clean wipe. Browsers without the API and users preferring reduced motion get an instant switch.
+
+User approved the design and the spacing after review. The removed visible "Dark" label is an implementation choice they accepted in the same review.

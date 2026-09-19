@@ -38,10 +38,42 @@ const setTheme = (theme) => {
 setTheme(
   getPreference("maitreyi-theme") || (systemTheme.matches ? "dark" : "light"),
 );
+// The incoming theme is revealed by a circle growing from the switch to the far corner.
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 themeButton?.addEventListener("click", () => {
   const theme = root.dataset.theme === "dark" ? "light" : "dark";
-  setTheme(theme);
-  setPreference("maitreyi-theme", theme);
+  const commit = () => {
+    setTheme(theme);
+    setPreference("maitreyi-theme", theme);
+  };
+  if (!document.startViewTransition || reducedMotion.matches) return commit();
+  const box = themeButton.getBoundingClientRect();
+  const x = box.left + box.width / 2;
+  const y = box.top + box.height / 2;
+  const radius = Math.hypot(
+    Math.max(x, innerWidth - x),
+    Math.max(y, innerHeight - y),
+  );
+  document
+    .startViewTransition(commit)
+    .ready.then(() =>
+      root.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${radius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 520,
+          easing: "cubic-bezier(.32,.72,.35,1)",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      ),
+    )
+    .catch(() => {
+      /* A skipped transition still leaves the theme applied. */
+    });
 });
 systemTheme.addEventListener("change", (event) => {
   if (!getPreference("maitreyi-theme"))

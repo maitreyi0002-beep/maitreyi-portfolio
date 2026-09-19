@@ -119,3 +119,9 @@ Validation: check/build passed. Desktop screenshots confirmed initial contents p
 Per user reversal, the four before/after pairs in "Designing for momentum" stack vertically below 768px instead of sitting side by side. Single-column `.study-pair` with an 18px gap; desktop unchanged.
 
 Validation: `npm run check` and `npm run build` passed, and the generated page still contains all four pairs in section 6. No visual browser verification was performed in this session because no browser tool was available; desktop and mobile rendering of this change remain visually unconfirmed.
+
+
+## 2026-09-19: theme switch redesign and circular reveal
+The theme toggle is now a sun/moon pill with a sliding knob, and switching themes plays a circular reveal growing from the switch. Applies to the homepage and the Super Agent case-study header; agent routes keep their plain text button.
+
+Validation: `npm run check` and `npm run build` passed and `node --check` passed on `site/app.js`. Box-model math was recomputed against the global `border-box` reset after an initial padding error would have overflowed the icons. User reviewed the switch and the icon spacing in the browser and approved both. No agent-side browser verification was performed this session because no browser tool was available; reduced-motion and no-JavaScript fallbacks were reviewed in source only and remain visually unconfirmed.

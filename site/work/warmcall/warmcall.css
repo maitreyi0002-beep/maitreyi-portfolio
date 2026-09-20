@@ -7,3 +7,7 @@
 .mobile-journey p{margin:0 0 8px}.mobile-journey .journey-steps{color:var(--muted);margin:0}
 .warmcall-page .study-article section{scroll-margin-top:90px}
 .warmcall-page .study-system-cta{margin:24px 0 30px}
+/* A passing mention, not a highlighted destination: the page is about mobile,
+   so the desktop-only web prototype gets an inline link rather than a CTA. */
+.warmcall-page .study-article p a{text-decoration:underline;text-underline-offset:3px}
+.warmcall-page .study-article p a:hover{opacity:.7}

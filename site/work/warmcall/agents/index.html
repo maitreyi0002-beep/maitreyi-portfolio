@@ -34,9 +34,7 @@ Instead of bringing the entire Loop product to mobile, I focused on the moments 
 
 ## WarmCall — The pitch could be opened anywhere
 
-WarmCall let sales reps create personalized AI video pitches for prospects. Creating them required focus — personalization, recording and reviewing all lived primarily on desktop.
-
-[Try the web version prototype ↗](https://maitreyi0002-beep.github.io/warmcall-prototype/web/)
+WarmCall let sales reps create personalized AI video pitches for prospects. Creating them required focus — personalization, recording and reviewing all lived primarily on desktop ([try the web prototype ↗](https://maitreyi0002-beep.github.io/warmcall-prototype/web/)).
 
 ![WarmCall mobile video pitch, messaging and booking a call](../../assets/warmcall/warmcall.png)
 

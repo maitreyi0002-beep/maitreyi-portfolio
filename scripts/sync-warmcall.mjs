@@ -4,7 +4,7 @@ const base = new URL('../site/work/warmcall/', import.meta.url);
 const raw = await readFile(new URL('warmcall-case-study.md',base),'utf8');
 const home = await readFile(new URL('../site/index.html',import.meta.url),'utf8');
 const esc = s => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+const inline = s => esc(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\[([^\]]+)\]\((https:\/\/[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 const dimensions = new Map();
 for (const name of ['hero','loop','warmcall']) {
   const png=await readFile(new URL(`../../assets/warmcall/${name}.png`,base));

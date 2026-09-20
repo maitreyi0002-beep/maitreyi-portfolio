@@ -1,0 +1,12 @@
+/* Reuse the shared case-study column, navigation, type, theme and footer. */
+.do-eyebrow{margin:0 0 12px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.do-pipeline{padding:0;list-style:none;border-left:2px solid var(--line);margin:24px 0}
+.do-pipeline li{padding:0 0 22px 20px}.do-pipeline li:last-child{padding-bottom:0}
+.do-pipeline strong{display:block}.do-pipeline span{color:var(--muted)}
+.do-evidence{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0}
+.do-evidence div{border-top:1px solid var(--line);padding-top:12px;font-size:13px;color:var(--muted)}
+.do-evidence strong{display:block;color:var(--text);margin-bottom:6px}
+.do-figure{margin:26px 0 30px}
+.do-figure img{display:block;width:100%;height:auto;border-radius:8px}
+.do-figure figcaption{font-size:12px;color:var(--muted);margin-top:10px}
+@media(max-width:370px){.do-evidence{grid-template-columns:1fr}}

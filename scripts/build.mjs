@@ -2,6 +2,7 @@ import './sync-agent.mjs';
 import './sync-super-agent.mjs';
 import './sync-connect.mjs';
 import './sync-warmcall.mjs';
+import './sync-design-observability.mjs';
 import { cp, mkdir, rm } from "node:fs/promises";
 await rm(new URL("../dist/", import.meta.url), {
   recursive: true,

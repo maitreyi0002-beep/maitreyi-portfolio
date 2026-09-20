@@ -1,0 +1,9 @@
+/* Reuse the shared case-study column, navigation, type, theme and footer. */
+.warmcall-page .study-intro img{aspect-ratio:auto;height:auto}
+.warmcall-products{margin:20px 0 0;font-weight:600;color:var(--text)!important}
+.warmcall-figure{margin:26px 0 30px}
+.warmcall-figure img{display:block;width:100%;height:auto}
+.mobile-journey{padding:18px 0;border-top:1px solid var(--line)}
+.mobile-journey p{margin:0 0 8px}.mobile-journey .journey-steps{color:var(--muted);margin:0}
+.warmcall-page .study-article section{scroll-margin-top:90px}
+.warmcall-page .study-system-cta{margin:24px 0 30px}

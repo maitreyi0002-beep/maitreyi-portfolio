@@ -60,3 +60,7 @@ Copy: user-supplied `connect-case-study.md`, preserved in `site/work/connect/`. 
 | access-after.png | https://framerusercontent.com/images/bMaEtDEFbYUHZROps6yNyyYwQ0.png?width=2896&height=1596 |
 | page-before.png | https://framerusercontent.com/images/tentQVj6bVVB0nHpWHYZMOLtx4s.png?width=6092&height=2946 |
 | page-after.png | https://framerusercontent.com/images/8AQbr1PM2kp85BYBv85xe6Rvv8.png?width=4320&height=2511 |
+
+
+## Loop AI × WarmCall mobile case study (2026-09-20)
+Copy supplied directly by Maitreyi in this task. Three original images supplied for this page, copied unchanged to `site/assets/warmcall/`: image 1 → hero.png; image 2 → warmcall.png; image 3 → loop.png. Images show user work; no screens or outcomes generated. Prototype routes confirmed against the read-only warmcall-navigation checkout: Loop full app at loop/app.html, WarmCall web/index.html responsive entry, and mobile/index.html.

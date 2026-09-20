@@ -47,7 +47,7 @@ document.addEventListener("click", (event) => {
     !event.ctrlKey &&
     !event.shiftKey &&
     !event.altKey;
-  if (link && isPlainClick && navigatesAway(link)) {
+  if (!event.defaultPrevented && link && isPlainClick && navigatesAway(link)) {
     event.preventDefault();
     playClickSound();
     setTimeout(() => {

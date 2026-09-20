@@ -16,8 +16,8 @@ One onboarding system for 50+ connectors, turning complex workflows into six fam
 [Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/connect/)
 
 ### WarmCall
-An interactive AI sales prototype, from simulated buyer conversations to personalized pitches.
-[Explore prototype](https://maitreyi0002-beep.github.io/warmcall-prototype/)
+Mobile design across WarmCall and Loop, shaped by accessibility and urgency.
+[Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/warmcall/)
 
 ## Latest experiments
 [components.codes](https://components.codes/): A growing library of considered interactions. Live React + Tailwind components, with the code ready to make your own.

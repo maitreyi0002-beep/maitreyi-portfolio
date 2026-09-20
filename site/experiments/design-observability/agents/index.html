@@ -53,7 +53,7 @@ Positive feedback became a set of guardrails for future changes. New requests we
 
 The automation outputs appeared in Slack as a weekly design-feedback density map. A short overview showed where feedback was concentrated, with a thread for the evidence behind the numbers.
 
-![Weekly Slack feedback summary](https://maitreyi0002-beep.github.io/maitreyi-portfolio/assets/loop-weekly-feedback.png)
+![Weekly Slack feedback summary](https://maitreyi.design/assets/loop-weekly-feedback.png)
 
 Counts describe extracted feedback that week, not problem severity or prevalence.
 

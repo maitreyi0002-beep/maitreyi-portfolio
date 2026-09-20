@@ -12,7 +12,7 @@ async function size(src) {
     dimensions.set(src, [png.readUInt32BE(16), png.readUInt32BE(20)]);
   }
 }
-const asset = url => url.replace('https://maitreyi0002-beep.github.io/maitreyi-portfolio/', '');
+const asset = url => url.replace('https://maitreyi0002-beep.github.io/maitreyi-portfolio/', '').replace('https://maitreyi.design/', '');
 function figure(url, alt, caption) {
   const src = asset(url);
   return size(src).then(() => {

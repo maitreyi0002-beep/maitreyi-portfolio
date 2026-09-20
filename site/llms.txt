@@ -9,20 +9,20 @@ I work across AI products, design systems, and code. I enjoy turning an ambiguou
 
 ### Super Agent
 Four AI agents, one conversation. Helping people get things done without choosing which assistant to ask.
-[Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/super-agent/)
+[Read case study](https://maitreyi.design/work/super-agent/)
 
 ### Connect
 One onboarding system for 50+ connectors, turning complex workflows into six familiar patterns.
-[Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/connect/)
+[Read case study](https://maitreyi.design/work/connect/)
 
 ### WarmCall
 Mobile design across WarmCall and Loop, shaped by accessibility and urgency.
-[Read case study](https://maitreyi0002-beep.github.io/maitreyi-portfolio/work/warmcall/)
+[Read case study](https://maitreyi.design/work/warmcall/)
 
 ## Latest experiments
 [components.codes](https://components.codes/): A growing library of considered interactions. Live React + Tailwind components, with the code ready to make your own.
 [Morphing Flow](https://maitreyi0002-beep.github.io/morphing-flow/): The agent skill behind components.codes. A reusable set of rules for building liquid interfaces with accessible, everyday controls.
-[Design Observability](https://maitreyi0002-beep.github.io/maitreyi-portfolio/experiments/design-observability/): A research skill I built at Loop. Its outputs supported weekly sprint planning and a roadmap across 23 product flows.
+[Design Observability](https://maitreyi.design/experiments/design-observability/): A research skill I built at Loop. Its outputs supported weekly sprint planning and a roadmap across 23 product flows.
 
 ## Contact
 - [maitreyi0002@gmail.com](mailto:maitreyi0002@gmail.com)

@@ -36,6 +36,12 @@ Import this GitHub repository in your Vercel account. `vercel.json` selects **Ot
 ## Deploy to GitHub Pages
 Use the included `.github/workflows/pages.yml`, then select **GitHub Actions** as the Pages source in repository Settings > Pages. The workflow builds and deploys only `dist/`; repository memory is not served by the website. Relative asset links work under a project URL as well as a root domain. Repository visibility/plan must support Pages.
 
+## Custom domain
+Primary address: https://maitreyi.design/ (GoDaddy DNS, GitHub Pages hosting).
+GitHub Settings > Pages holds the custom domain; the Actions deployment does not need a CNAME file.
+GoDaddy has four A records for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and `www` CNAME `maitreyi0002-beep.github.io` (all TTL 1 hour).
+GitHub provisions the HTTPS certificate after DNS validation; enable Enforce HTTPS when available. See `docs/STATUS.md` for verification status.
+
 ## Continue in another agent
 Open this repository in Claude Code, Cursor, or another coding environment and say:
 
